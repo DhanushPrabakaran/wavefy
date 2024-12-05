@@ -16,7 +16,7 @@ const Header = async () => {
   return (
     <div className="  items-center flex w-full justify-between px-2 py-4">
       <h1 className=" font-antonsc uppercase text-3xl  ">WavefY</h1>
-      <nav className="flex space-x-3">
+      <nav className="flex space-x-3 justify-center align-middle items-center ">
         <ModeToggle />
 
         {session?.user?.image ? (

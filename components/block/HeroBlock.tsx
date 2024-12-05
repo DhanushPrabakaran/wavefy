@@ -1,7 +1,3 @@
-// import { LucideGithub } from "lucide-react";
-import React from "react";
-// import { Button } from "../ui/button";
-
 const HeroBlock = () => {
   return (
     <div className="flex  items-center  bg-fixed bg-no-repeat bg-cover flex-col text-center  min-h-screen align-middle backdrop-blur-2xl justify-around">
