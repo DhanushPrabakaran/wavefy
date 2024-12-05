@@ -14,11 +14,11 @@ const Header = async () => {
   const session = await auth();
 
   return (
-    <div className=" border-b items-center flex w-full justify-between px-2 py-4">
-      <h1 className=" font-antonsc text-xl uppercase ">wavefy</h1>
+    <div className="  items-center flex w-full justify-between px-2 py-4">
+      <h1 className=" font-antonsc uppercase text-3xl  ">WavefY</h1>
       <nav className="flex space-x-3">
         <ModeToggle />
-        <Button>Menu</Button>
+
         {session?.user?.image ? (
           <Popover>
             <PopoverTrigger asChild>

@@ -1,28 +1,32 @@
-import { LucideGithub } from "lucide-react";
+// import { LucideGithub } from "lucide-react";
 import React from "react";
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 
 const HeroBlock = () => {
   return (
-    <div className="flex  items-center  bg-fixed bg-no-repeat bg-cover flex-col text-center  min-h-screen align-middle backdrop-blur-2xl justify-center">
-          <div
-          className="">
-        <h1 className=" overflow-hidden border-b leading-none bg-clip-text bg-fixed bg-no-repeat font-antonsc text-[35vw]">
-          WAVEFY
+    <div className="flex  items-center  bg-fixed bg-no-repeat bg-cover flex-col text-center  min-h-screen align-middle backdrop-blur-2xl justify-around">
+      <div className="">
+        <h1 className=" overflow-hidden p-2 uppercase  leading-none bg-clip-text bg-fixed bg-no-repeat font-antonsc max-md:text-[10vw] text-[8vw]">
+          Click on
+          <span className=" text-green-600">
+            {" "}
+            SIGNUP .<br />
+          </span>
+          Update YOur
+          <span className=" text-red-600">
+            {" "}
+            Details, <br />
+          </span>
+          choose the
+          <span className=" text-orange-600"> Theme </span>And
+          <br />
+          press publish
+          <span className=" text-amber-600">
+            {" "}
+            PUBLISH.
+            <br />
+          </span>
         </h1>
-
-        <div className="flex max-lg:flex-col w-full py-2 gap-3 space-x-2 justify-between align-middle items-center font-mono text-sm">
-          <div className="lg:text-justify max-w-md">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque
-            cupiditate numquam excepturi velit
-          </div>
-          <div className="text-justify max-w-md flex items-center align-middle content-center space-x-2 ">
-            <Button>Follow</Button>
-            <Button size={"icon"}>
-              <LucideGithub />
-            </Button>
-          </div>
-        </div>
       </div>
     </div>
   );

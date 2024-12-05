@@ -1,11 +1,12 @@
 import React from "react";
 import { SignIn } from "../auth/signin-button";
+import { Button } from "../ui/button";
 
 const SigninBlock = () => {
   return (
-    <div className=" w-full min-h-screen">
+    <Button className="w-full" type="submit">
       <SignIn />
-    </div>
+    </Button>
   );
 };
 
