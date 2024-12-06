@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
-
+// import grain from "@/public/svg/grain.svg";
 import "./globals.css";
 import Header from "@/components/block/Header";
 
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${AntonSC.variable} ${RobotoCondensed.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${AntonSC.variable} ${RobotoCondensed.variable} bg-cover bg-no-repeat   relative antialiased`}
       >
         <ThemeProvider
           attribute="class"
