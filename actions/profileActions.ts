@@ -1,5 +1,6 @@
 "use server";
 import { prisma } from "@/prisma/db";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FormSchema = z.object({
@@ -8,6 +9,7 @@ const FormSchema = z.object({
   bio: z.string().optional(),
   website: z.string().optional(),
   experience: z.number().optional(),
+  role: z.string().min(3, "role must be at least 3 characters"),
 });
 export async function fetchProfileAction(email: string) {
   const profile = await prisma.user.findUnique({
@@ -20,11 +22,11 @@ export async function fetchProfileAction(email: string) {
 
 // Server Action for updating profile data
 export async function updateProfileAction(data: z.infer<typeof FormSchema>) {
-  // "use server"; // Server action annotation
   const updatedProfile = await prisma.user.upsert({
     where: { email: data.email },
     update: data,
     create: data,
   });
+  redirect("/dashboard");
   return updatedProfile;
 }

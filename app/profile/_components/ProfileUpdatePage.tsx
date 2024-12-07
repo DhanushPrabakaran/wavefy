@@ -15,7 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { useEffect } from "react";
 import {
   fetchProfileAction,
   updateProfileAction,
@@ -27,6 +26,7 @@ const FormSchema = z.object({
   bio: z.string().optional(),
   website: z.string().optional(),
   experience: z.coerce.number().optional(),
+  role: z.string().min(3, "role must be at least 3 characters"),
 });
 
 export default function ProfileUpdatePage({ email }: { email: string }) {
@@ -41,6 +41,7 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
           bio: profile.bio || "",
           website: profile.website || "",
           experience: profile.experience ?? 0,
+          role: profile.role || "",
         };
       } catch (error: unknown) {
         toast({
@@ -56,6 +57,7 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
           bio: "",
           website: "",
           experience: 0,
+          role: "",
         };
       }
     },
@@ -108,6 +110,20 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
                 <Input placeholder="Your email" {...field} disabled />
               </FormControl>
               <FormDescription>Your email cannot be changed.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Role</FormLabel>
+              <FormControl>
+                <Input placeholder="Your role" {...field} disabled />
+              </FormControl>
+              <FormDescription>This is your role</FormDescription>
               <FormMessage />
             </FormItem>
           )}
