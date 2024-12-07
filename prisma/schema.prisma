@@ -10,7 +10,7 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
   // previewFeatures = ["driverAdapters"]
 }
 
@@ -22,11 +22,16 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
+  role          String?
   Authenticator Authenticator[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  bio           String?
+  experience    Int?
+  website       String?
+  Project       Project[]
+  Message       Message[]
+  Experience    Experience[]
 }
 
 model Account {
@@ -82,4 +87,44 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+// Project model
+model Project {
+  id          String @id @default(cuid()) @map("_id")
+  title       String
+  description String
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Message model
+model Message {
+  id        String   @id @default(cuid()) @map("_id")
+  sender    String
+  content   String
+  timestamp DateTime
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Experience model
+model Experience {
+  id          String   @id @default(cuid()) @map("_id")
+  role        String
+  start       DateTime
+  end         DateTime
+  description String
+  company     String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

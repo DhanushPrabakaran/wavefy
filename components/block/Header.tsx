@@ -10,6 +10,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import Link from "next/link";
 const Header = async () => {
   const session = await auth();
 
@@ -28,7 +29,9 @@ const Header = async () => {
               </Avatar>
             </PopoverTrigger>
             <PopoverContent className="w-40 p-2 justify-center flex items-stretch flex-col gap-2">
-              <Button>Profile</Button>
+              <Button>
+                <Link href={"/dashboard"}>Dashboard</Link>
+              </Button>
               <SignOut />
             </PopoverContent>
           </Popover>
