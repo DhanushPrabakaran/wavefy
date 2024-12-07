@@ -5,7 +5,7 @@ import Banner from "@/public/Banner.jpeg";
 import { User } from "@/types/global";
 const UserContainer = (props: { User: User }) => {
   return (
-    <section className=" rounded-lg mb-4 md:max-w-md pb-2 w-full h-full  bg-secondary  ">
+    <section className=" rounded-lg mb-4 md:max-w-md pb-2 w-full h-full  border  ">
       <div className=" overflow-hidden">
         <Image
           src={Banner}
@@ -43,7 +43,7 @@ const UserContainer = (props: { User: User }) => {
               props.User.website}
           </p>
           <p className="fluid-base text-center md:text-base p-2">
-            {props.User.about}
+            {props.User.bio}
           </p>
         </div>
         <Link

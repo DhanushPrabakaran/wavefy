@@ -6,10 +6,7 @@ const MessageContainer = (props: { messages: Message[] }) => {
   return (
     <section className=" rounded-lg     ">
       {props.messages.map((message) => (
-        <div
-          key={message.id}
-          className=" mb-4 group rounded-lg  bg-secondary p-2"
-        >
+        <div key={message.id} className=" mb-4 group rounded-lg  border p-2">
           <h3 className="text-lg font-semibold">{message.sender}</h3>
           <div>
             <p className="text-gray-500">{message.content}</p>
