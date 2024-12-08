@@ -1,9 +1,9 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Input } from "@/components/ui/input"; // Assuming you have a custom Input component
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"; // Assuming you have a custom Button component
 import {
   Form,
   FormControl,
@@ -12,10 +12,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { z } from "zod";
-import { createExperienceAction } from "@/actions/experienceAction";
-import { Experience } from "@/types/global";
+} from "@/components/ui/form"; // Assuming you have custom form components
+import { toast } from "@/hooks/use-toast";
+import {
+  fetchExperience,
+  updateExperienceAction,
+} from "@/actions/experienceAction";
 import { cn } from "@/lib/utils";
 import {
   Popover,
@@ -26,39 +28,74 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 
-// Zod schema with date validation
-const experienceSchema = z.object({
-  role: z.string().min(1, "Role is required"),
-  company: z.string().min(1, "Company is required"),
-  start: z
-    .string()
-    .refine((val) => !isNaN(new Date(val).getTime()), "Invalid date format"),
-  end: z
-    .string()
-    .refine((val) => !isNaN(new Date(val).getTime()), "Invalid date format"),
-  description: z.string().min(1, "Description is required"),
-});
-
-const Page = () => {
-  const form = useForm<Experience>({
+export default function ProjectForm({
+  experienceid,
+}: {
+  experienceid: string;
+}) {
+  const experienceSchema = z.object({
+    role: z.string().min(1, "Role is required"),
+    company: z.string().min(1, "Company is required"),
+    start: z
+      .string()
+      .refine((val) => !isNaN(new Date(val).getTime()), "Invalid date format"),
+    end: z
+      .string()
+      .refine((val) => !isNaN(new Date(val).getTime()), "Invalid date format"),
+    description: z.string().min(1, "Description is required"),
+  });
+  const form = useForm<z.infer<typeof experienceSchema>>({
     resolver: zodResolver(experienceSchema),
-    defaultValues: {
-      role: "",
-      company: "",
-      start: new Date().toISOString().split("T")[0],
-      end: new Date().toISOString().split("T")[0],
-      description: "",
+    defaultValues: async () => {
+      try {
+        const project = await fetchExperience(experienceid);
+
+        if (!project) {
+          throw new Error("Project not found");
+        }
+
+        return {
+          role: project.role || "",
+          company: project.company || "",
+          start: project.start || new Date().toISOString().split("T")[0],
+          end: project.start || new Date().toISOString().split("T")[0],
+          description: project.description || "",
+        };
+      } catch (error: unknown) {
+        toast({
+          title: "Error loading project",
+          description:
+            error instanceof Error
+              ? error.message
+              : "An unexpected error occurred",
+        });
+        return {
+          role: "",
+          company: "",
+          start: new Date().toISOString().split("T")[0],
+          end: new Date().toISOString().split("T")[0],
+          description: "",
+        };
+      }
     },
   });
 
-  const onSubmit = async (data: Experience) => {
+  const onSubmit = async (data: z.infer<typeof experienceSchema>) => {
     try {
-      await createExperienceAction({
-        ...data,
+      // Call the action to update the project using the provided experienceid
+      await updateExperienceAction(experienceid, data);
+      toast({
+        title: "Success",
+        description: "Project updated successfully.",
       });
-      console.log("Experience created:", data);
-    } catch (error) {
-      console.error("Error creating experience:", error);
+    } catch (error: unknown) {
+      toast({
+        title: "Error updating project",
+        description:
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred",
+      });
     }
   };
 
@@ -99,6 +136,8 @@ const Page = () => {
               </FormItem>
             )}
           />
+
+          {/* Start Date */}
           <FormField
             control={form.control}
             name="start"
@@ -225,6 +264,6 @@ const Page = () => {
       </Form>
     </section>
   );
-};
+}
 
-export default Page;
+// ProjectForm;

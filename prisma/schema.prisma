@@ -116,14 +116,14 @@ model Message {
 
 // Experience model
 model Experience {
-  id          String   @id @default(cuid()) @map("_id")
+  id          String @id @default(cuid()) @map("_id")
   role        String
-  start       DateTime
-  end         DateTime
+  start       String
+  end         String
   description String
-  company     String?
+  company     String
   userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

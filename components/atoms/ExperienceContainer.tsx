@@ -1,12 +1,44 @@
+"use client";
 import { Experience } from "@/types/global";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "../ui/button";
+import { deleteExperienceAction } from "@/actions/experienceAction";
+import { toast } from "@/hooks/use-toast";
 
-const ExperienceContainer = (props: { experiences: Experience[] }) => {
+const ExperienceContainer = ({
+  experiences,
+}: {
+  experiences: Experience[];
+}) => {
+  const [experiencesList, setexperiencesList] =
+    useState<Experience[]>(experiences);
+  // Function to handle experiences deletion
+  const handleDelete = async (experiencesId: string) => {
+    try {
+      await deleteExperienceAction(experiencesId);
+      toast({
+        title: "Success",
+        description: "experiences deleted successfully.",
+      });
+      // Remove the deleted experiences from the UI
+      setexperiencesList((prev) =>
+        prev.filter((experiences) => experiences.id !== experiencesId)
+      );
+    } catch (error: unknown) {
+      toast({
+        title: "Error deleting experiences",
+        description:
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred.",
+      });
+    }
+  };
   return (
     <section className=" rounded-lg ">
-      {props.experiences.length > 0 ? (
-        props.experiences.map((experience) => (
+      {experiencesList.length > 0 ? (
+        experiencesList.map((experience) => (
           <div
             key={experience.id}
             className="mb-4 flex group flex-wrap max-w-full rounded-md  border p-2"
@@ -19,17 +51,19 @@ const ExperienceContainer = (props: { experiences: Experience[] }) => {
               </p>
               <div className="hidden  group-hover:flex items-center justify-end w-full duration-1000">
                 <Link
-                  className="text-xs bg-whitehover:bg-black text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default m-1"
-                  href={""}
+                  className="text-xs bg-white hover:bg-black text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
+                  href={`/experience/${experience.id}`}
                 >
-                  update
+                  Update
                 </Link>
-                <Link
-                  className=" text-xs bg-white hover:bg-red-600 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default m-1"
-                  href={""}
+
+                {/* Delete Button */}
+                <Button
+                  className="text-xs bg-white hover:bg-red-600 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
+                  onClick={() => handleDelete(experience.id)}
                 >
-                  delete
-                </Link>
+                  Delete
+                </Button>
               </div>
             </div>
           </div>
