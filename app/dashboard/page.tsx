@@ -22,7 +22,7 @@ const Page = async () => {
   }
 
   return (
-    <div className="lg:min-h-screen flex max-md:p-2 gap-2 max-md:flex-col">
+    <div className="lg:h-screen flex max-md:p-2 gap-2 max-md:flex-col">
       <UserContainer User={user} />
       <div className=" w-full lg:overflow-scroll overflow-x-hidden">
         <h2 className="text-2xl font-semibold font-antonsc mb-4">Projects</h2>

@@ -1,3 +1,5 @@
+import { fetchProfileAction } from "@/actions/portfolioActions";
+// import { fetchProject } from "@/actions/projectAction";
 import PortfolioPage from "@/components/block/portfolio/portfolioPage";
 
 export default async function Page({
@@ -6,12 +8,7 @@ export default async function Page({
   params: Promise<{ portfolioid: string }>;
 }) {
   const portfolioid = (await params).portfolioid;
-  // const data = await fetchProject(experienceid);
+  const user = await fetchProfileAction(portfolioid);
   // [portfolioid];
-  return (
-    <div>
-      page{portfolioid}
-      <PortfolioPage />
-    </div>
-  );
+  return <PortfolioPage User={user} />;
 }

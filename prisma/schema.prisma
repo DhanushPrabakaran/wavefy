@@ -106,7 +106,7 @@ model Message {
   id        String   @id @default(cuid()) @map("_id")
   sender    String
   content   String
-  timestamp DateTime
+  timestamp DateTime @default(now())
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 

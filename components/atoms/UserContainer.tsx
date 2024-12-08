@@ -56,12 +56,7 @@ const UserContainer = (props: { User: User }) => {
           </Button>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <span className="font-bold text-sm text-indigo-600">Total Views</span>
-        <span className="text-xs bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default">
-          from start
-        </span>
-      </div>
+
       <div className="flex items-center justify-between mt-6">
         <div>
           <svg
@@ -86,7 +81,7 @@ const UserContainer = (props: { User: User }) => {
         </div>
       </div>
 
-      <div className="">
+      {/* <div className="">
         <div className="flex items-center justify-between">
           <span className="font-bold text-sm text-green-600">
             Total Messages
@@ -117,7 +112,7 @@ const UserContainer = (props: { User: User }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex items-center justify-between">
         <span className="font-bold text-sm ">views</span>

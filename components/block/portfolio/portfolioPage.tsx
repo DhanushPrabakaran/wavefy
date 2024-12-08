@@ -1,153 +1,159 @@
 "use client";
 
-import { useState } from "react";
+import { format, parseISO } from "date-fns";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { createMessageAction } from "@/actions/portfolioActions";
+import { toast } from "@/hooks/use-toast";
+import { UserProfile } from "@/types/global";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-// import { cn } from "@/lib/utils";
 
-const PortfolioPage = () => {
-  // State for the message form
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+const PortfolioPage = ({ User }: { User: UserProfile }) => {
+  // Schema for contact form
+  const messageSchema = z.object({
+    sender: z.string().min(1, "Name is required"),
+    content: z.string().min(1, "Message is required"),
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const form = useForm<z.infer<typeof messageSchema>>({
+    resolver: zodResolver(messageSchema),
+    defaultValues: {
+      sender: "",
+      content: "",
+    },
+  });
 
-    // Simulate sending the message (you can replace with actual form submission logic)
-    setTimeout(() => {
-      alert("Message sent!");
-      setIsSubmitting(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 1000);
+  const onSubmit = async (data: z.infer<typeof messageSchema>) => {
+    try {
+      await createMessageAction(User.id, data);
+      toast({
+        title: "Message Sent",
+        description: "Your message has been sent successfully.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          error instanceof Error ? error.message : "An error occurred.",
+      });
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
-      <section className="w-full p-8 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white">
+    <div className="min-h-screen font-antonsc">
+      {/* Hero Section */}
+      <section className="min-h-screen ">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl font-bold">Dhanush Prabakaran</h1>
-          <p className="mt-4 text-xl">
-            Web Developer | Enthusiast | Problem Solver
-          </p>
+          <h1 className="text-4xl font-bold">{User.name}</h1>
+          <p className="mt-4 text-xl">{User.bio}</p>
         </div>
       </section>
 
-      {/* User Data Section */}
-      <section className="py-12">
+      {/* About Me Section */}
+      <section className="min-h-screen">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-semibold text-center mb-8">About Me</h2>
-          <p className="text-lg text-center">
-            I{"'"}m a passionate web developer currently in my final year of
-            BTech, focused on building innovative solutions. I specialize in the
-            MEAN stack, AWS, and Next.js, and Im always learning new
-            technologies to stay ahead.
-          </p>
+          <p className="text-lg text-center">{User.bio}</p>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section className="py-12 bg-gray-200">
+      <section className="min-h-screen ">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-semibold text-center mb-8">Projects</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Example Project */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold">ShopTracker</h3>
-              <p className="text-gray-700 mt-4">
-                A platform for real-time crowd-sourced product and price data.
-              </p>
-            </div>
-            {/* Add more projects here */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold">Project 2</h3>
-              <p className="text-gray-700 mt-4">Description of project 2...</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold">Project 3</h3>
-              <p className="text-gray-700 mt-4">Description of project 3...</p>
-            </div>
+            {User.Project.map((project, index) => (
+              <div
+                key={index}
+                className="bg-secondary p-6 rounded-lg shadow-md"
+              >
+                <h3 className="text-xl font-semibold">{project.title}</h3>
+                <p className="text-gray-700 mt-4">{project.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="py-12">
+      <section className="min-h-screen">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-semibold text-center mb-8">
             Experience
           </h2>
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold">rtCamp - Web Developer</h3>
-              <p className="text-gray-700 mt-4">Jan 2024 - Present</p>
-              <p className="text-gray-700 mt-2">
-                Building scalable web applications with cutting-edge
-                technologies.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold">
-                Juspay - Frontend Developer
-              </h3>
-              <p className="text-gray-700 mt-4">June 2023 - Dec 2023</p>
-              <p className="text-gray-700 mt-2">
-                Worked on enhancing user interfaces and optimizing frontend
-                performance.
-              </p>
-            </div>
+            {User.Experience.map((experience, index) => (
+              <div
+                key={index}
+                className="bg-secondary p-6 rounded-lg shadow-md"
+              >
+                <h3 className="text-xl font-semibold">{experience.role}</h3>
+                <p className="text-gray-700 mt-4">
+                  {format(parseISO(experience.start), "PPP")} -{" "}
+                  {format(parseISO(experience.end), "PPP")}
+                </p>
+                <p className="text-gray-700 mt-4">{experience.company}</p>
+                <p className="text-gray-700 mt-4">{experience.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-12 bg-gray-200">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="min-h-screen ">
+        <div className="max-w-md mx-auto px-4">
           <h2 className="text-2xl font-semibold text-center mb-8">
             Contact Me
           </h2>
-          <form onSubmit={handleFormSubmit} className="space-y-6">
-            <div>
-              <Input
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                required
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="sender"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Your Name" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div>
-              <Input
-                type="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                required
+
+              <FormField
+                control={form.control}
+                name="content"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Message</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Your Message" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div>
-              <Textarea
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                required
-              />
-            </div>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </Button>
-          </form>
+              <Button
+                disabled={!form.formState.isDirty || !form.formState.isValid}
+                type="submit"
+              >
+                Submit
+              </Button>
+            </form>
+          </Form>
         </div>
       </section>
 
