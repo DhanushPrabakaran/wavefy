@@ -3,8 +3,9 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
 // import grain from "@/public/svg/grain.svg";
 import "./globals.css";
-import Header from "@/components/block/Header";
+// import Header from "@/components/block/Header";
 import { Toaster } from "@/components/ui/toaster";
+import Header from "@/components/block/Header";
 
 const AntonSC = localFont({
   src: "./fonts/SCHABO-Condensed.woff",

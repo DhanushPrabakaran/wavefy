@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form"; // Assuming you have custom form components
 import { toast } from "@/hooks/use-toast";
 import { fetchProject, updateProjectAction } from "@/actions/projectAction";
+// import Header from "@/components/block/Header";
 
 export default function ProjectForm({ projectId }: { projectId: string }) {
   const projectSchema = z.object({
@@ -70,50 +71,55 @@ export default function ProjectForm({ projectId }: { projectId: string }) {
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Project Title"
-                  value={field.value || ""}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Project Description"
-                  value={field.value || ""}
-                  onChange={(e) => field.onChange(e.target.value)}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          disabled={!form.formState.isDirty || !form.formState.isValid}
-          type="submit"
+    <div>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-2/3 space-y-6"
         >
-          Submit
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Project Title"
+                    value={field.value || ""}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Project Description"
+                    value={field.value || ""}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            disabled={!form.formState.isDirty || !form.formState.isValid}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </form>
+      </Form>
+    </div>
   );
 }
 

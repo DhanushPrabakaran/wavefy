@@ -47,9 +47,14 @@ const UserContainer = (props: { User: User }) => {
             {props.User.bio}
           </p>
         </div>
-        <Button>
-          <Link href={"/profile"}>Edit Profile</Link>
-        </Button>
+        <div className="flex gap-1">
+          <Button>
+            <Link href={"/profile"}>Edit Profile</Link>
+          </Button>
+          <Button>
+            <Link href={`/portfolio/${props.User.id}`}>view portfolio</Link>
+          </Button>
+        </div>
       </div>
       <div className="flex items-center justify-between">
         <span className="font-bold text-sm text-indigo-600">Total Views</span>

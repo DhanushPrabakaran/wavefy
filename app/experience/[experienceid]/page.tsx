@@ -8,7 +8,6 @@ export default async function Page({
   params: Promise<{ experienceid: string }>;
 }) {
   const experienceid = (await params).experienceid;
-  // const data = await fetchProject(experienceid);
   return (
     <Suspense fallback={<BlogSuspense />}>
       <ProjectForm experienceid={experienceid} />

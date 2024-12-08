@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"; // Assuming you have custom form components
 import { Project } from "@/types/global";
+// import Header from "@/components/block/Header";
 
 const Page = () => {
   const projectSchema = z.object({
@@ -31,6 +32,7 @@ const Page = () => {
 
   return (
     <section className="min-h-screen flex items-center flex-col align-middle justify-center">
+ 
       <h1 className=" font-antonsc text-2xl text-center"> Create Project</h1>
       <Form {...form}>
         <form
