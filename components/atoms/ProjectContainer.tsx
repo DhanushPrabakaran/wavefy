@@ -1,41 +1,74 @@
+"use client";
 import { Project } from "@/types/global";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "../ui/button";
+import { deleteProjectAction } from "@/actions/projectAction";
+import { toast } from "@/hooks/use-toast";
 
-const ProjectContainer = (props: { projects: Project[] }) => {
+const ProjectContainer = ({ projects }: { projects: Project[] }) => {
+  const [projectList, setProjectList] = useState<Project[]>(projects);
+
+  // Function to handle project deletion
+  const handleDelete = async (projectId: string) => {
+    try {
+      await deleteProjectAction(projectId);
+      toast({
+        title: "Success",
+        description: "Project deleted successfully.",
+      });
+      // Remove the deleted project from the UI
+      setProjectList((prev) =>
+        prev.filter((project) => project.id !== projectId)
+      );
+    } catch (error: unknown) {
+      toast({
+        title: "Error deleting project",
+        description:
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred.",
+      });
+    }
+  };
+
   return (
-    <section className="  rounded-lg ">
-      {props.projects.map((project) => (
+    <section className="rounded-lg">
+      {projectList.map((project) => (
         <div
           key={project.id}
-          className="mb-4 flex group flex-wrap max-w-full rounded-md  border"
+          className="mb-4 flex group flex-wrap max-w-full rounded-md border"
         >
-          <div className=" flex items-start flex-col justify-center w-full p-2">
+          <div className="flex items-start flex-col justify-center w-full p-2">
             <h3 className="text-lg font-semibold">{project.title}</h3>
-            <p className="text-gray-500 line-clamp-2">
-              {project.description +
-                "adjkh iuywleiurylwcity  yiuyi  ryirwy nkuhikeuryciry uiriueyrityriouyoitu oyrowiutyqowuiqy"}
-            </p>
-            <div className="hidden  group-hover:flex items-center justify-end w-full duration-1000">
+            <p className="text-gray-500 line-clamp-2">{project.description}</p>
+            <div className="hidden group-hover:flex items-center justify-end w-full duration-1000">
+              {/* Update Button */}
               <Link
-                className="text-xs bg-whitehover:bg-black text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default m-1"
-                href={""}
+                className="text-xs bg-white hover:bg-black text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
+                href={`/project/${project.id}`}
               >
-                update
+                Update
               </Link>
-              <button className=" text-xs bg-white hover:bg-red-600 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default m-1">
-                delete
-              </button>
+
+              {/* Delete Button */}
+              <Button
+                className="text-xs bg-white hover:bg-red-600 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
+                onClick={() => handleDelete(project.id)}
+              >
+                Delete
+              </Button>
             </div>
           </div>
         </div>
       ))}
+      {/* Add New Project Link */}
       <Link
-        className="p-4  mb-4 align-middle flex items-center justify-center rounded-md border"
-        href={"/project"}
+        className="p-4 mb-4 align-middle flex items-center justify-center rounded-md border"
+        href="/project"
       >
         <svg
-          className="w-12 h-12  fill-stone-200  rounded-full text-gray-200 "
+          className="w-12 h-12 fill-stone-200 rounded-full text-gray-200"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           id="add-new"

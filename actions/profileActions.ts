@@ -30,3 +30,4 @@ export async function updateProfileAction(data: z.infer<typeof FormSchema>) {
   redirect("/dashboard");
   return updatedProfile;
 }
+

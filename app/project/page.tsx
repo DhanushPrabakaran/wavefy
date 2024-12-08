@@ -16,8 +16,6 @@ import {
 } from "@/components/ui/form"; // Assuming you have custom form components
 import { Project } from "@/types/global";
 
-// type ProjectFormProps = {
-
 const Page = () => {
   const projectSchema = z.object({
     title: z.string().min(1, "Title is required"),
@@ -32,40 +30,48 @@ const Page = () => {
   });
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(createProjectAction)}
-        className="space-y-4"
-      >
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input placeholder="Project Title" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Input placeholder="Project Description" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
+    <section className="min-h-screen flex items-center flex-col align-middle justify-center">
+      <h1 className=" font-antonsc text-2xl text-center"> Create Project</h1>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(createProjectAction)}
+          className="w-2/3 space-y-6 "
+        >
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input placeholder="Project Title" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Input placeholder="Project Description" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            disabled={!form.formState.isDirty || !form.formState.isValid}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </form>
+      </Form>
+    </section>
   );
 };
 
