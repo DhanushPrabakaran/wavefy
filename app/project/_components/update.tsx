@@ -79,7 +79,11 @@ export default function ProjectForm({ projectId }: { projectId: string }) {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input placeholder="Project Title" {...field} />
+                <Input
+                  placeholder="Project Title"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -92,14 +96,18 @@ export default function ProjectForm({ projectId }: { projectId: string }) {
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input placeholder="Project Description" {...field} />
+                <Input
+                  placeholder="Project Description"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button
-          disabled={ !form.formState.isDirty || !form.formState.isValid}
+          disabled={!form.formState.isDirty || !form.formState.isValid}
           type="submit"
         >
           Submit

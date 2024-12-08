@@ -2,12 +2,12 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input"; // Assuming you have a custom Input component
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
+  // FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,16 +26,24 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 
-// Zod schema with date validation
+// Zod schema for validating the date as strings
 const experienceSchema = z.object({
   role: z.string().min(1, "Role is required"),
   company: z.string().min(1, "Company is required"),
   start: z
     .string()
-    .refine((val) => !isNaN(new Date(val).getTime()), "Invalid date format"),
+    .min(1, "Start date is required") // Ensure the date is not empty
+    .refine(
+      (val) => !isNaN(new Date(val).getTime()),
+      "Invalid start date format"
+    ),
   end: z
     .string()
-    .refine((val) => !isNaN(new Date(val).getTime()), "Invalid date format"),
+    .min(1, "End date is required") // Ensure the date is not empty
+    .refine(
+      (val) => !isNaN(new Date(val).getTime()),
+      "Invalid end date format"
+    ),
   description: z.string().min(1, "Description is required"),
 });
 
@@ -45,7 +53,7 @@ const Page = () => {
     defaultValues: {
       role: "",
       company: "",
-      start: new Date().toISOString().split("T")[0],
+      start: new Date().toISOString().split("T")[0], // Valid ISO date string
       end: new Date().toISOString().split("T")[0],
       description: "",
     },
@@ -99,12 +107,14 @@ const Page = () => {
               </FormItem>
             )}
           />
+
+          {/* Start Date */}
           <FormField
             control={form.control}
             name="start"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Date of birth</FormLabel>
+                <FormLabel>Start Date</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -116,7 +126,7 @@ const Page = () => {
                         )}
                       >
                         {field.value ? (
-                          format(field.value, "PPP")
+                          format(new Date(field.value), "PPP")
                         ) : (
                           <span>Pick a date</span>
                         )}
@@ -125,12 +135,16 @@ const Page = () => {
                     </FormControl>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <div className="rounded-md  border">
+                    <div className="rounded-md border">
                       <Calendar
                         className="bg-background"
                         mode="single"
-                        selected={new Date(field.value)}
-                        onSelect={field.onChange}
+                        selected={
+                          field.value ? new Date(field.value) : undefined
+                        }
+                        onSelect={(date) =>
+                          field.onChange(date?.toISOString().split("T")[0])
+                        }
                         disabled={(date) =>
                           date > new Date() || date < new Date("1900-01-01")
                         }
@@ -139,9 +153,6 @@ const Page = () => {
                     </div>
                   </PopoverContent>
                 </Popover>
-                <FormDescription>
-                  Your date of birth is used to calculate your age.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -153,7 +164,7 @@ const Page = () => {
             name="end"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Date of birth</FormLabel>
+                <FormLabel>End Date</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -165,11 +176,11 @@ const Page = () => {
                         )}
                       >
                         {field.value ? (
-                          format(field.value, "PPP")
+                          format(new Date(field.value), "PPP")
                         ) : (
                           <span>Pick a date</span>
                         )}
-                        <CalendarIcon className="ml-auto h-4 w-4  bg-background opacity-50" />
+                        <CalendarIcon className="ml-auto h-4 w-4 bg-background opacity-50" />
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
@@ -177,12 +188,16 @@ const Page = () => {
                     className="w-auto p-0 bg-background"
                     align="start"
                   >
-                    <div className="rounded-md  border">
+                    <div className="rounded-md border">
                       <Calendar
                         className="bg-background"
                         mode="single"
-                        selected={new Date(field.value)}
-                        onSelect={field.onChange}
+                        selected={
+                          field.value ? new Date(field.value) : undefined
+                        }
+                        onSelect={(date) =>
+                          field.onChange(date?.toISOString().split("T")[0])
+                        }
                         disabled={(date) =>
                           date > new Date() || date < new Date("1900-01-01")
                         }
@@ -191,9 +206,6 @@ const Page = () => {
                     </div>
                   </PopoverContent>
                 </Popover>
-                <FormDescription>
-                  Your date of birth is used to calculate your age.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -216,7 +228,12 @@ const Page = () => {
 
           {/* Submit Button */}
           <Button
-            disabled={!form.formState.isDirty || !form.formState.isValid}
+            disabled={
+              !form.formState.isDirty ||
+              !form.formState.isValid ||
+              !form.getValues("start") ||
+              !form.getValues("end") // Ensure dates are selected
+            }
             type="submit"
           >
             Submit

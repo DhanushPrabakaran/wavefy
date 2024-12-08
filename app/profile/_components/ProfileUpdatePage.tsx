@@ -91,7 +91,11 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input
+                  placeholder="Your name"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -107,7 +111,12 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Your email" {...field} disabled />
+                <Input
+                  placeholder="Your email"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                  disabled
+                />
               </FormControl>
               <FormDescription>Your email cannot be changed.</FormDescription>
               <FormMessage />
@@ -121,7 +130,12 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
             <FormItem>
               <FormLabel>Role</FormLabel>
               <FormControl>
-                <Input placeholder="Your role" {...field} disabled />
+                <Input
+                  placeholder="Your role"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                  disabled
+                />
               </FormControl>
               <FormDescription>This is your role</FormDescription>
               <FormMessage />
@@ -135,7 +149,11 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
             <FormItem>
               <FormLabel>Bio</FormLabel>
               <FormControl>
-                <Input placeholder="Your bio" {...field} />
+                <Input
+                  placeholder="Your bio"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
               </FormControl>
               <FormDescription>
                 A short description about yourself.
@@ -151,7 +169,11 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
             <FormItem>
               <FormLabel>Website</FormLabel>
               <FormControl>
-                <Input placeholder="Your website URL" {...field} />
+                <Input
+                  placeholder="Your website URL"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
               </FormControl>
               <FormDescription>
                 Your personal or professional website.
@@ -170,7 +192,8 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
                 <Input
                   type="number"
                   placeholder="Years of experience"
-                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
               <FormDescription>

@@ -1,6 +1,6 @@
 "use server";
 import { prisma } from "@/prisma/db";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { z } from "zod";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FormSchema = z.object({
@@ -27,7 +27,6 @@ export async function updateProfileAction(data: z.infer<typeof FormSchema>) {
     update: data,
     create: data,
   });
-  redirect("/dashboard");
+  // redirect("/dashboard");
   return updatedProfile;
 }
-

@@ -3,8 +3,9 @@ import { prisma } from "@/prisma/db"; // Assuming you're using Prisma for DB
 
 import { auth } from "@/auth"; // Assuming you're using an auth utility
 import { Project } from "@/types/global";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 // Server function to handle project creation
 export async function createProjectAction(data: Project) {
   const session = await auth();

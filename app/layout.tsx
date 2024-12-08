@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 // import grain from "@/public/svg/grain.svg";
 import "./globals.css";
 import Header from "@/components/block/Header";
+import { Toaster } from "@/components/ui/toaster";
 
 const AntonSC = localFont({
   src: "./fonts/SCHABO-Condensed.woff",
@@ -50,6 +51,7 @@ export default function RootLayout({
         >
           <Header />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
