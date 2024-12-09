@@ -9,6 +9,6 @@ export default async function Page({
 }) {
   const portfolioid = (await params).portfolioid;
   const user = await fetchProfileAction(portfolioid);
-  // [portfolioid];
+
   return <PortfolioPage User={user} />;
 }

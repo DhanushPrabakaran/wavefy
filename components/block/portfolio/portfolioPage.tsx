@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-
+import Link from "next/link";
 const PortfolioPage = ({ User }: { User: UserProfile }) => {
   // Schema for contact form
   const messageSchema = z.object({
@@ -51,33 +51,49 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen font-antonsc">
+    <div className="min-h-screen scroll-smooth relative font-roboto">
       {/* Hero Section */}
-      <section className="min-h-screen ">
+      <div className="w-full h-20 items-center font-roboto font-semibold absolute p-2 text-xl justify-between flex">
+        <h1 className="uppercase ">{User.name}</h1>
+        <nav className="flex gap-3">
+          <Link href={"#Home"}>Home</Link>
+          <Link href={"#About"}>About</Link>
+          <Link href={"#Project"}>Project</Link>
+          <Link href={"#Experience"}>Experience</Link>
+          <Link href={"#Contact"}>Contact</Link>
+        </nav>
+      </div>
+      <section
+        id="Home"
+        className="min-h-screen flex bg-cover bg-fixed bg-[url('../public/Banner.jpeg')] align-middle justify-center items-center"
+      >
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl font-bold">{User.name}</h1>
-          <p className="mt-4 text-xl">{User.bio}</p>
+          <h1 className="text-[8vw] font-bold  font-antonsc">{User.name}</h1>
+          <p className="mt-4 text-xl text-justify  px-2 ">{User.bio}</p>
         </div>
       </section>
 
       {/* About Me Section */}
-      <section className="min-h-screen">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-center mb-8">About Me</h2>
-          <p className="text-lg text-center">{User.bio}</p>
+      <section id="About" className="min-h-screen flex items-center">
+        <div className="max-w-6xl  mx-auto px-4">
+          <h2 className="text-4xl font-antonsc font-semibold text-center mb-8">
+            About Me
+          </h2>
+          <p className="text-lg border rounded-sm p-2 max-w-6xl text-center">
+            {User.bio}
+          </p>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section className="min-h-screen ">
+      <section id="Project" className="min-h-screen m-4">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-center mb-8">Projects</h2>
+          <h2 className="text-4xl font-semibold text-center mb-8 font-antonsc">
+            Projects
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {User.Project.map((project, index) => (
-              <div
-                key={index}
-                className="bg-secondary p-6 rounded-lg shadow-md"
-              >
+              <div key={index} className=" border p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold">{project.title}</h3>
                 <p className="text-gray-700 mt-4">{project.description}</p>
               </div>
@@ -87,24 +103,26 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
       </section>
 
       {/* Experience Section */}
-      <section className="min-h-screen">
+      <section id="Experience" className="min-h-screen m-4">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-center mb-8">
+          <h2 className="text-4xl font-antonsc font-semibold text-center  mb-8">
             Experience
           </h2>
-          <div className="space-y-6">
+          <div className="space-y-6 text-background">
             {User.Experience.map((experience, index) => (
               <div
                 key={index}
-                className="bg-secondary p-6 rounded-lg shadow-md"
+                className="bg-foreground p-6 rounded-lg shadow-md"
               >
-                <h3 className="text-xl font-semibold">{experience.role}</h3>
-                <p className="text-gray-700 mt-4">
+                <h3 className="text-3xl font-semibold font-antonsc">
+                  {experience.role}
+                </h3>
+                <p className="text-2xl font-semibold font-antonsc mt-4">
                   {format(parseISO(experience.start), "PPP")} -{" "}
                   {format(parseISO(experience.end), "PPP")}
                 </p>
-                <p className="text-gray-700 mt-4">{experience.company}</p>
-                <p className="text-gray-700 mt-4">{experience.description}</p>
+                <p className=" text-xl mt-4">{experience.company}</p>
+                <p className=" mt-4">{experience.description}</p>
               </div>
             ))}
           </div>
@@ -112,9 +130,9 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="min-h-screen ">
-        <div className="max-w-md mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-center mb-8">
+      <section id="Contact" className="min-h-screen flex items-center ">
+        <div className=" w-full max-w-xl mx-auto px-4">
+          <h2 className="text-4xl font-antonsc font-semibold text-center mb-8">
             Contact Me
           </h2>
           <Form {...form}>
@@ -158,9 +176,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center py-4">
-        <p>&copy; 2024 Dhanush Prabakaran. All rights reserved.</p>
-      </footer>
     </div>
   );
 };

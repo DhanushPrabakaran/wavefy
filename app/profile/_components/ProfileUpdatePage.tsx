@@ -29,6 +29,9 @@ const FormSchema = z.object({
   website: z.string().optional(),
   experience: z.coerce.number().optional(),
   role: z.string().min(3, "role must be at least 3 characters"),
+  gitLink: z.string().url().optional(),
+  instaLink: z.string().url().optional().or(z.literal("")),
+  linkedinLink: z.string().url().optional(),
 });
 
 export default function ProfileUpdatePage({ email }: { email: string }) {
@@ -45,6 +48,9 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
           website: profile.website || "",
           experience: profile.experience ?? 0,
           role: profile.role || "",
+          gitLink: profile.gitLink || "",
+          instaLink: profile.instaLink || "",
+          linkedinLink: profile.linkedinLink || "",
         };
       } catch (error: unknown) {
         toast({
@@ -62,6 +68,9 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
           website: "",
           experience: 0,
           role: "",
+          gitLink: "",
+          instaLink: "",
+          linkedinLink: "",
         };
       }
     },
@@ -187,6 +196,27 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
         />
         <FormField
           control={form.control}
+          name="experience"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Experience</FormLabel>
+              <FormControl>
+                <Input
+                  type="number"
+                  placeholder="Years of experience"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+              </FormControl>
+              <FormDescription>
+                Your professional experience in years.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="website"
           render={({ field }) => (
             <FormItem>
@@ -207,21 +237,54 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
         />
         <FormField
           control={form.control}
-          name="experience"
+          name="gitLink"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Experience</FormLabel>
+              <FormLabel>Github</FormLabel>
               <FormControl>
                 <Input
-                  type="number"
-                  placeholder="Years of experience"
+                  placeholder="Your github URL"
                   value={field.value || ""}
                   onChange={(e) => field.onChange(e.target.value)}
                 />
               </FormControl>
-              <FormDescription>
-                Your professional experience in years.
-              </FormDescription>
+              <FormDescription> Your Github Handle url</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />{" "}
+        <FormField
+          control={form.control}
+          name="linkedinLink"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Linkedin</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Your Linkedin URL"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+              </FormControl>
+              <FormDescription>Your Linkedin Handle url.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />{" "}
+        <FormField
+          control={form.control}
+          name="instaLink"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Insta</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Your Insta URL"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+              </FormControl>
+              <FormDescription>Your Insta Handle url.</FormDescription>
               <FormMessage />
             </FormItem>
           )}

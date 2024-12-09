@@ -1,7 +1,6 @@
 import ProfileUpdatePage from "@/app/profile/_components/ProfileUpdatePage";
 import { auth } from "@/auth";
 import Header from "@/components/block/Header";
-// import Header from "@/components/block/Header";
 
 export default async function ProfilePage() {
   const session = await auth();
