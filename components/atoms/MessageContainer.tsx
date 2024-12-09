@@ -1,6 +1,7 @@
 import { Message } from "@/types/global";
 import Link from "next/link";
 import React from "react";
+import { Button } from "../ui/button";
 
 const MessageContainer = (props: { messages: Message[] }) => {
   return (
@@ -13,12 +14,9 @@ const MessageContainer = (props: { messages: Message[] }) => {
             <p>{message.timestamp.toString()}</p>
           </div>
           <div className="hidden  group-hover:flex items-center justify-end w-full duration-1000">
-            <Link
-              className=" bg-white hover:bg-red-600 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default m-1"
-              href={""}
-            >
-              delete
-            </Link>
+            <Button size={"sm"} variant={"destructive"} className="m-1">
+              <Link href={""}>delete</Link>
+            </Button>
           </div>
         </div>
       ))}

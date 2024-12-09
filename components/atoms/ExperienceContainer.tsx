@@ -50,16 +50,20 @@ const ExperienceContainer = ({
                   "adjkh iuywleiurylwcity  yiuyi  ryirwy nkuhikeuryciry uiriueyrityriouyoitu oyrowiutyqowuiqy"}
               </p>
               <div className="hidden  group-hover:flex items-center justify-end w-full duration-1000">
-                <Link
-                  className="text-xs bg-white hover:bg-black text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
-                  href={`/experience/${experience.id}`}
+                <Button
+                  asChild
+                  size={"sm"}
+                  variant={"secondary"}
+                  className="m-1"
                 >
-                  Update
-                </Link>
+                  <Link href={`/experience/${experience.id}`}>Update</Link>
+                </Button>
 
                 {/* Delete Button */}
                 <Button
-                  className="text-xs bg-white hover:bg-red-600 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
+                  size={"sm"}
+                  variant={"destructive"}
+                  className="m-1"
                   onClick={() => handleDelete(experience.id)}
                 >
                   Delete

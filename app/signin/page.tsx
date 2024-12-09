@@ -1,10 +1,9 @@
-import React from "react";
+import Header from "@/components/block/Header";
 import SignIn from "../_components/sign-in";
-// import { auth } from "@/auth";
 const page = () => {
-  // const session =
   return (
     <div>
+      <Header />
       <SignIn />
     </div>
   );

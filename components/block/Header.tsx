@@ -3,8 +3,6 @@ import { Button } from "../ui/button";
 import { ModeToggle } from "../ui/ModeToggle";
 import { auth } from "@/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { SignOut } from "../auth/signout-button";
-import { SignIn } from "../auth/signin-button";
 import {
   Popover,
   PopoverContent,
@@ -16,7 +14,9 @@ const Header = async () => {
 
   return (
     <div className="  items-center flex w-full justify-between px-2 py-4">
-      <h1 className=" font-antonsc uppercase text-3xl  ">WavefY</h1>
+      <Link href={"/"} className=" font-antonsc uppercase text-3xl  ">
+        WavefY
+      </Link>
       <nav className="flex space-x-3 justify-center align-middle items-center ">
         <ModeToggle />
 
@@ -29,14 +29,18 @@ const Header = async () => {
               </Avatar>
             </PopoverTrigger>
             <PopoverContent className="w-40 p-2 justify-center flex items-stretch flex-col gap-2">
-              <Button>
+              <Button asChild>
                 <Link href={"/dashboard"}>Dashboard</Link>
               </Button>
-              <SignOut />
+              <Button asChild>
+                <Link href={"/signout"}>signout</Link>
+              </Button>
             </PopoverContent>
           </Popover>
         ) : (
-          <SignIn />
+          <Button asChild>
+            <Link href={"/signin"}>signout</Link>
+          </Button>
         )}
       </nav>
     </div>

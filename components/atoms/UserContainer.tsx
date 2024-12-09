@@ -45,10 +45,10 @@ const UserContainer = (props: { User: User }) => {
           <p className="line-clamp-2 m-2">{props.User.bio}</p>
         </div>
         <div className="flex gap-1">
-          <Button>
+          <Button asChild>
             <Link href={"/profile"}>Edit Profile</Link>
           </Button>
-          <Button>
+          <Button asChild>
             <Link href={`/portfolio/${props.User.id}`}>view portfolio</Link>
           </Button>
         </div>

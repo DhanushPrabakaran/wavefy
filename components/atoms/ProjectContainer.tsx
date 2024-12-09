@@ -44,16 +44,15 @@ const ProjectContainer = ({ projects }: { projects: Project[] }) => {
             <p className="text-gray-500 line-clamp-2">{project.description}</p>
             <div className="hidden group-hover:flex items-center justify-end w-full duration-1000">
               {/* Update Button */}
-              <Link
-                className="text-xs bg-white hover:bg-black text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
-                href={`/project/${project.id}`}
-              >
-                Update
-              </Link>
+              <Button asChild size={"sm"} variant={"secondary"} className="m-1">
+                <Link href={`/project/${project.id}`}>Update</Link>
+              </Button>
 
               {/* Delete Button */}
               <Button
-                className="text-xs bg-white hover:bg-red-600 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-pointer m-1"
+                size={"sm"}
+                variant={"destructive"}
+                className="m-1"
                 onClick={() => handleDelete(project.id)}
               >
                 Delete
