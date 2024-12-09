@@ -66,7 +66,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen text-emerald-600 lg:text-lg scroll-smooth relative text-center font-mono">
+    <div className="min-h-screen text-emerald-600 relative lg:text-lg scroll-smooth  text-center font-mono">
       {/* Hero Section */}
       <section className="flex absolute w-full z-20  top-0 border-bb bg-transparent dark:border-neutral-800 border-foreground border-forground border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
         <div className="flex justify-between items-center space-x-16">
@@ -78,7 +78,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
         <nav className="md:flex hidden lg:flex  font-mono justify-between space-x-5 text-sm">
           <Link className="group" href="#Home">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full relative">
+              <Button className=" rounded-full ">
                 <div className=" rounded-full  absolute -right-3 "></div>
                 Home
               </Button>
@@ -86,7 +86,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </Link>
           <Link className="group  " href="#About">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full  relative">
+              <Button className=" rounded-full  ">
                 <div className="  rounded-full bg-foreground absolute -right-3 "></div>
                 About
               </Button>
@@ -94,7 +94,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </Link>
           <Link className="group" href="#Project">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full relative">
+              <Button className=" rounded-full ">
                 <div className=" rounded-full  absolute -right-3 "></div>
                 Project
               </Button>
@@ -102,7 +102,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </Link>
           <Link className="group" href="#Experience">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full relative">
+              <Button className=" rounded-full ">
                 <div className=" rounded-full  absolute -right-3 "></div>
                 Experience
               </Button>
@@ -110,7 +110,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </Link>
           <Link className="group" href="#Contact">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full relative">
+              <Button className=" rounded-full ">
                 <div className=" rounded-full  absolute -right-3 "></div>
                 Contact
               </Button>
@@ -150,7 +150,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
 
           {/* Mobile Menu Button */}
           <div className="  md:hidden pr-2 text-xl font-mono flex flex-grow  group ">
-            <Button onClick={toggleMenu} className="  rounded-full relative">
+            <Button onClick={toggleMenu} className="  rounded-full ">
               Menu
             </Button>
           </div>
@@ -179,10 +179,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 </Button>
                 <div className="   lg:hidden  text-xl font-mono flex flex-grow  group ">
-                  <Button
-                    onClick={toggleMenu}
-                    className="  rounded-full relative"
-                  >
+                  <Button onClick={toggleMenu} className="  rounded-full ">
                     Menu
                   </Button>
                 </div>
@@ -248,12 +245,17 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
 
       <section
         id="Home"
-        className="min-h-screen flex bg-cover bg-fixed bg-[url('../public/Banner.jpeg')] align-middle justify-center items-center"
+        className="min-h-screen w-full relative flex bg-cover bg-fixed bg-[url('../public/Banner.jpeg')] align-middle justify-center items-center"
       >
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-[8vw] font-bold p-2 font-antonsc">{User.name}</h1>
-          <p className="mt-4    px-2 ">{User.bio}</p>
+        <div className="flex flex-col gap-8">
+          <h1 className="text-[8vw] font-bold  font-antonsc">{User.name}</h1>
+          <p className="mt-4 text-3xl   ">{User.role}</p>
         </div>
+        {/* <div className="absolute bottom-0 left-0 -translate-y-1/2 transform">
+          <h1 className="origin-left m-3 -rotate-90">{User.email}</h1>
+        </div>
+
+        <h1 className="absolute bottom-0  left-0">{User.email}</h1> */}
       </section>
 
       {/* About Me Section */}
