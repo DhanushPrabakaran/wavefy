@@ -19,8 +19,10 @@ import {
   fetchProfileAction,
   updateProfileAction,
 } from "@/actions/profileActions";
+import { Textarea } from "@/components/ui/textarea";
 
 const FormSchema = z.object({
+  image: z.string().url(),
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   bio: z.string().optional(),
@@ -36,6 +38,7 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
       try {
         const profile = await fetchProfileAction(email);
         return {
+          image: profile.image || "",
           name: profile.name || "",
           email: profile.email || "",
           bio: profile.bio || "",
@@ -52,6 +55,7 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
               : "An unexpected error occurred",
         });
         return {
+          image: "",
           name: "",
           email: "",
           bio: "",
@@ -106,6 +110,26 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
         />
         <FormField
           control={form.control}
+          name="image"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Image</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Your image url"
+                  value={field.value || ""}
+                  onChange={(e) => field.onChange(e.target.value)}
+                />
+              </FormControl>
+              <FormDescription>
+                This is your public display proile image.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
@@ -134,7 +158,6 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
                   placeholder="Your role"
                   value={field.value || ""}
                   onChange={(e) => field.onChange(e.target.value)}
-                  disabled
                 />
               </FormControl>
               <FormDescription>This is your role</FormDescription>
@@ -149,7 +172,7 @@ export default function ProfileUpdatePage({ email }: { email: string }) {
             <FormItem>
               <FormLabel>Bio</FormLabel>
               <FormControl>
-                <Input
+                <Textarea
                   placeholder="Your bio"
                   value={field.value || ""}
                   onChange={(e) => field.onChange(e.target.value)}

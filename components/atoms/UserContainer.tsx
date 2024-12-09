@@ -6,7 +6,7 @@ import { User } from "@/types/global";
 import { Button } from "../ui/button";
 const UserContainer = (props: { User: User }) => {
   return (
-    <section className=" p-2 rounded-lg mb-4 md:max-w-md  pb-2 w-full h-full  border  ">
+    <section className=" rounded-lg mb-4 md:max-w-md  pb-2 w-full h-full  border  ">
       <div className=" overflow-hidden">
         <Image
           src={Banner}
@@ -33,19 +33,16 @@ const UserContainer = (props: { User: User }) => {
         </div>
 
         <div className="flex flex-col items-center">
-          <h2 className=" fluid-xl md:text-3xl font-bold ">
-            {props.User.name}
-          </h2>
-          <p className=" fluid-md md:text-base font-semibold text-center">
-            {props.User.role +
-              " . " +
-              props.User.email +
-              " . " +
-              props.User.website}
-          </p>
-          <p className="fluid-base text-center md:text-base p-2">
-            {props.User.bio}
-          </p>
+          <h2 className="  text-3xl font-bold ">{props.User.name}</h2>
+          <p className="  text-2xl  text-center">{props.User.role}</p>
+          <p>{props.User.email}</p>
+          <Link
+            className=" underline  text-secondary-foreground"
+            href={`${props.User.website}`}
+          >
+            {props.User.website}
+          </Link>
+          <p className="line-clamp-2 m-2">{props.User.bio}</p>
         </div>
         <div className="flex gap-1">
           <Button>
@@ -74,52 +71,19 @@ const UserContainer = (props: { User: User }) => {
             ></path>
           </svg>
         </div>
-        <div className="flex flex-col">
+        <div className="flex p-2 flex-col">
           <div className="flex items-end">
             <span className="text-2xl 2xl:text-3xl font-bold">8,141</span>
           </div>
         </div>
       </div>
 
-      {/* <div className="">
-        <div className="flex items-center justify-between">
-          <span className="font-bold text-sm text-green-600">
-            Total Messages
-          </span>
-          <span className="text-xs bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default">
-            from start
-          </span>
-        </div>
-        <div className="flex items-center justify-between mt-6">
-          <div>
-            <svg
-              className="w-12 h-12 p-2.5 bg-green-400 bg-opacity-20 rounded-full text-green-600 border border-green-600"
-              fill="none"
-              stroke="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-              id="message"
-            >
-              <g>
-                <path d="M24 7H8a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h1v4a1 1 0 0 0 1.61.79L16.77 23H24a3 3 0 0 0 3-3V10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1h-7.57a1 1 0 0 0-.61.21L11 25v-3a1 1 0 0 0-1-1H8a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1Z"></path>
-                <path d="M11 14h6a1 1 0 0 0 0-2h-6a1 1 0 0 0 0 2zm10 2H11a1 1 0 0 0 0 2h10a1 1 0 0 0 0-2z"></path>
-              </g>
-            </svg>
-          </div>
-          <div className="flex flex-col">
-            <div className="flex items-end">
-              <span className="text-2xl 2xl:text-3xl font-bold">217</span>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <span className="font-bold text-sm ">views</span>
         <span className=" px-2 py-1 rounded-lg transition duration-200 cursor-default">
           till today
         </span>
-      </div>
+      </div> */}
     </section>
   );
 };
