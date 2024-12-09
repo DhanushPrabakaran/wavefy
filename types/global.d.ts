@@ -25,6 +25,9 @@ export type UserProfile = {
   updatedAt: Date;
   image: string | null;
   email: string;
+  instaLink: string | null;
+  gitLink: string | null;
+  linkedinLink: string | null;
   bio: string | null;
   website: string | null;
   emailVerified: Date | null;
