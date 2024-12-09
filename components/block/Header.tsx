@@ -39,7 +39,7 @@ const Header = async () => {
           </Popover>
         ) : (
           <Button asChild>
-            <Link href={"/signin"}>signout</Link>
+            <Link href={"/signin"}>Signin</Link>
           </Button>
         )}
       </nav>
