@@ -51,16 +51,26 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen scroll-smooth relative font-roboto">
+    <div className="min-h-screen scroll-smooth relative text-center font-mono">
       {/* Hero Section */}
-      <div className="w-full h-20 items-center font-roboto font-semibold absolute p-2 text-xl justify-between flex">
-        <h1 className="uppercase ">{User.name}</h1>
-        <nav className="flex gap-3">
-          <Link href={"#Home"}>Home</Link>
-          <Link href={"#About"}>About</Link>
-          <Link href={"#Project"}>Project</Link>
-          <Link href={"#Experience"}>Experience</Link>
-          <Link href={"#Contact"}>Contact</Link>
+      <div className="w-full h-20 items-center   absolute p-2 text-xl justify-between flex">
+        <h1 className="uppercase font-semibold font-roboto">{User.name}</h1>
+        <nav className="flex font-mono text-base hover:text-primary text-muted gap-3">
+          <Link className="text-foreground" href={"#Home"}>
+            Home
+          </Link>
+          <Link className="text-foreground" href={"#About"}>
+            About
+          </Link>
+          <Link className="text-foreground" href={"#Project"}>
+            Project
+          </Link>
+          <Link className="text-foreground" href={"#Experience"}>
+            Experience
+          </Link>
+          <Link className="text-foreground" href={"#Contact"}>
+            Contact
+          </Link>
         </nav>
       </div>
       <section
@@ -69,7 +79,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
       >
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-[8vw] font-bold  font-antonsc">{User.name}</h1>
-          <p className="mt-4 text-xl text-justify  px-2 ">{User.bio}</p>
+          <p className="mt-4 text-xl   px-2 ">{User.bio}</p>
         </div>
       </section>
 
