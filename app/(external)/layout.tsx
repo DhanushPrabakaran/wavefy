@@ -18,12 +18,12 @@ import { Toaster } from "@/components/ui/toaster";
 //   weight: "100 900",
 // });
 // const geistSans = localFont({
-//   src: ".../fonts/GeistMonoVF.woff",
+//   src: "../fonts/GeistMonoVF.woff",
 //   variable: "--font-geist-sans",
 //   weight: "100 900",
 // });
 // const geistMono = localFont({
-//   src: "../fonts/GeistMonoVF.woff",
+//   src: "./fonts/GeistMonoVF.woff",
 //   variable: "--font-geist-mono",
 //   weight: "100 900",
 // });
@@ -39,17 +39,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={` bg-cover bg-no-repeat   relative antialiased`}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-        <Toaster />
-      </ThemeProvider>
-    </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`bg-cover bg-no-repeat   relative antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
 // ${geistSans.variable} ${geistMono.variable} ${AntonSC.variable} ${RobotoCondensed.variable}
