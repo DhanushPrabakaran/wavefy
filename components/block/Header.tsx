@@ -13,9 +13,9 @@ const Header = async () => {
   const session = await auth();
 
   return (
-    <div className="  items-center flex w-full justify-between px-2 py-4">
-      <Link href={"/"} className=" font-antonsc uppercase text-3xl  ">
-        WavefY
+    <div className="   items-center flex w-full justify-between px-2 py-4">
+      <Link href={"/"} className=" font-antonsc  text-3xl  ">
+        Wavey
       </Link>
       <nav className="flex space-x-3 justify-center align-middle items-center ">
         <ModeToggle />

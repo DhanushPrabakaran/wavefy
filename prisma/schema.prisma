@@ -95,14 +95,15 @@ model Authenticator {
 
 // Project model
 model Project {
-  id          String @id @default(cuid()) @map("_id")
+  id          String   @id @default(cuid()) @map("_id")
   title       String
   description String
   userId      String
-  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  liveLink    String?
+  gitLink     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 // Message model

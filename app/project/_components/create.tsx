@@ -15,12 +15,13 @@ import {
   FormMessage,
 } from "@/components/ui/form"; // Assuming you have custom form components
 import { Project } from "@/types/global";
-// import Header from "@/components/block/Header";
 
 const CreateProject = () => {
   const projectSchema = z.object({
     title: z.string().min(1, "Title is required"),
     description: z.string().min(1, "Description is required"),
+    liveLink: z.string().optional(),
+    gitLink: z.string().optional(),
   });
   const form = useForm<Project>({
     resolver: zodResolver(projectSchema),

@@ -73,7 +73,7 @@ const ExperienceContainer = ({
           </div>
         ))
       ) : (
-        <div>not found</div>
+        <div></div>
       )}
       <Link
         className="p-4 mb-4 align-middle flex items-center justify-center rounded-md border"

@@ -6,7 +6,8 @@ const HeroBlock = () => {
           Click on
           <span className=" text-green-600">
             {" "}
-            SIGNUP .<br />
+            SIGNUP.
+            <br />
           </span>
           Update YOur
           <span className=" text-red-600">
