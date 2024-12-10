@@ -17,6 +17,9 @@ export default {
         sans: ["var(--font-geist-sans)"],
         antonsc: ["var(--font-antonsc)"],
         mono: ["var(--font-geist-mono)"],
+        schabo: ["var(--font-geist-schabo)"],
+        walkway: ["var(--font-walkway)"],
+        w95fa: ["var(--font-geist-w95fa)"],
       },
       colors: {
         background: "hsl(var(--background))",

@@ -81,7 +81,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen text-emerald-600 relative lg:text-lg scroll-smooth  text-center font-mono">
+    <div className="min-h-screen text-emerald-600 relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
       {/* Hero Section */}
       <section className="flex absolute w-full z-20  top-0 border-bb bg-transparent dark:border-neutral-800 border-foreground border-forground border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
         <div className="flex justify-between items-center space-x-16">
@@ -274,7 +274,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           <h2 className=" text-3xl lg:text-4xl  font-antonsc font-semibold text-center mb-8">
             About Me
           </h2>
-          <p className=" border rounded-sm p-2 max-w-6xl text-center">
+          <p className=" border rounded-sm p-2 max-w-6xl font-walkway text-center">
             {User.bio}
           </p>
         </div>

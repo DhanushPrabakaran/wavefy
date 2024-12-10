@@ -49,7 +49,9 @@ const UserContainer = (props: { User: User }) => {
             <Link href={"/profile"}>Edit Profile</Link>
           </Button>
           <Button asChild>
-            <Link href={`/portfolio/${props.User.id}`}>view portfolio</Link>
+            <Link target="_blank" href={`/portfolio/${props.User.id}`}>
+              view portfolio
+            </Link>
           </Button>
         </div>
       </div>

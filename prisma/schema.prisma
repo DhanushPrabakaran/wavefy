@@ -26,6 +26,7 @@ model User {
   instaLink     String?
   gitLink       String?
   linkedinLink  String?
+  ThemeNo       Int             @default(1)
   Viewers       BigInt          @default(0)
   Authenticator Authenticator[]
   createdAt     DateTime        @default(now())
@@ -53,8 +54,7 @@ model Account {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
 }

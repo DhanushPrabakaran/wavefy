@@ -1,8 +1,9 @@
 import { fetchProfileAction } from "@/actions/portfolioActions";
-// import { fetchProject } from "@/actions/projectAction";
+
 import PortfolioPage from "@/components/block/portfolio/portfolioPage";
 import Cursor from "@/components/ui/Cursor";
 
+const themeMap = [PortfolioPage, PortfolioPage, PortfolioPage, PortfolioPage];
 export default async function Page({
   params,
 }: {
@@ -11,9 +12,11 @@ export default async function Page({
   const portfolioid = (await params).portfolioid;
   const user = await fetchProfileAction(portfolioid);
 
+  const ThemeComponent = themeMap[user.ThemeNo] || themeMap[1];
+
   return (
     <>
-      <PortfolioPage User={user} />
+      <ThemeComponent User={user} />
       <Cursor />
     </>
   );
