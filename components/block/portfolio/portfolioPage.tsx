@@ -70,6 +70,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
         title: "Message Sent",
         description: "Your message has been sent successfully.",
       });
+      form.reset();
     } catch (error) {
       toast({
         title: "Error",
@@ -179,7 +180,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           <div className="py-4 px-2 h-full flex flex-col items-center">
             <div className="w-full flex justify-between  items-center">
               <div className="flex justify-between items-center space-x-16">
-                <h1 className=" text-xl pointer-events-none  uppercase font-extrabold ">
+                <h1 className=" text-2xl  lg:text-3xl  font-antonsc pointer-events-none    uppercase font-extrabold ">
                   {User.name}
                 </h1>
               </div>
