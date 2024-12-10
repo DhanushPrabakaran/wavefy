@@ -4,7 +4,10 @@ import { format, parseISO } from "date-fns";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { createMessageAction } from "@/actions/portfolioActions";
+import {
+  createMessageAction,
+  incrementViewerCount,
+} from "@/actions/portfolioActions";
 import { toast } from "@/hooks/use-toast";
 import { UserProfile } from "@/types/global";
 import {
@@ -21,7 +24,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MoonIcon,
   SunIcon,
@@ -30,6 +33,17 @@ import {
   HomeIcon,
 } from "@radix-ui/react-icons";
 const PortfolioPage = ({ User }: { User: UserProfile }) => {
+  useEffect(() => {
+    async function updateViewCount() {
+      try {
+        await incrementViewerCount(User.id);
+      } catch (error) {
+        console.error("Error incrementing viewer count:", error);
+      }
+    }
+
+    updateViewCount();
+  }, [User.id]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const toggleMenu = () => {

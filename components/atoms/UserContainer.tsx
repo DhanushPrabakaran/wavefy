@@ -73,17 +73,12 @@ const UserContainer = (props: { User: User }) => {
         </div>
         <div className="flex p-2 flex-col">
           <div className="flex items-end">
-            <span className="text-2xl 2xl:text-3xl font-bold">8,141</span>
+            <span className="text-2xl 2xl:text-3xl font-bold">
+              {props.User.Viewers}
+            </span>
           </div>
         </div>
       </div>
-
-      {/* <div className="flex items-center justify-between">
-        <span className="font-bold text-sm ">views</span>
-        <span className=" px-2 py-1 rounded-lg transition duration-200 cursor-default">
-          till today
-        </span>
-      </div> */}
     </section>
   );
 };

@@ -26,3 +26,16 @@ export async function createMessageAction(
   });
   return Message;
 }
+
+export async function incrementViewerCount(id: string) {
+  try {
+    const updatedPost = await prisma.user.update({
+      where: { id: id },
+      data: { Viewers: { increment: 1 } },
+    });
+    return updatedPost.Viewers; // Return updated count
+  } catch (error) {
+    console.error("Error updating viewer count:", error);
+    throw new Error("Failed to increment viewer count");
+  }
+}

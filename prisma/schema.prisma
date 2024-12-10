@@ -26,6 +26,7 @@ model User {
   instaLink     String?
   gitLink       String?
   linkedinLink  String?
+  Viewers       BigInt          @default(0)
   Authenticator Authenticator[]
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
