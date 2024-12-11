@@ -83,7 +83,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen text-emerald-600 relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
+    <div className="min-h-screen text-muted-foreground relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
       {/* Hero Section */}
       <section className="flex absolute w-full z-20  top-0 border-bb bg-transparent dark:border-neutral-800 border-foreground border-forground border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
         <div className="flex justify-between items-center space-x-16">
@@ -281,57 +281,53 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
         </div>
       </section>
       <HorizontalScroll items={User.Project} />
-
       {/* Experience Section */}
-      <section id="Experience" className="min-h-screen my-3 ">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-antonsc font-semibold text-center  mb-8">
-            Experience
-          </h2>
-          <div className="space-y-6 text-background">
-            {User.Experience.length > 0 ? (
-              User.Experience.map((experience, index) => (
-                <div
-                  key={index}
-                  className="bg-foreground p-6 rounded-lg shadow-md"
-                >
-                  <h3 className="text-3xl font-semibold font-antonsc">
-                    {experience.role}
-                  </h3>
-                  <p className="text-2xl font-semibold font-antonsc mt-4">
-                    {format(parseISO(experience.start), "PPP")} -{" "}
-                    {format(parseISO(experience.end), "PPP")}
-                  </p>
-                  <p className=" text-xl mt-4">{experience.company}</p>
-                  <p className=" mt-4 ">{experience.description}</p>
-                </div>
-              ))
-            ) : (
-              <div className="space-y-6 text-background">
-                {Array(3)
-                  .fill(null)
-                  .map((_, index) => (
-                    <div
-                      key={index}
-                      className="bg-foreground p-6 rounded-lg shadow-md"
-                    >
-                      <h3 className="text-3xl font-semibold font-antonsc">
-                        Your Role
-                      </h3>
-                      <p className="text-2xl font-semibold font-antonsc mt-4">
-                        {/* {format(parseISO(experience.start), "PPP")} -{" "}
-                        {format(parseISO(experience.end), "PPP")} */}
-                      </p>
-                      <p className=" text-xl mt-4"> company Name</p>
-                      <p className=" mt-4"> Job description </p>
-                    </div>
-                  ))}
+      <section
+        id="Experience"
+        className="min-h-screen  flex flex-col  flex-wrap justify-around  "
+      >
+        <h2 className="text-4xl font-antonsc font-semibold text-center  mb-8">
+          Experience
+        </h2>
+        <div className="space-y-6 text-start w-full self-center place-content-center">
+          {User.Experience.length > 0 ? (
+            User.Experience.map((experience, index) => (
+              <div
+                key={index}
+                className=" flex text-muted hover:text-foreground min-h-32 align-middle items-center max-md:flex-col justify-between border-y p-2"
+              >
+                <h3 className="text-3xl font-semibold font-antonsc w-full max-w-md">
+                  {experience.role}
+                </h3>
+                <p className="text-2xl font-semibold font-antonsc  w-full max-w-md">
+                  {format(parseISO(experience.start), "PPP")} -{" "}
+                  {format(parseISO(experience.end), "PPP")}
+                </p>
+                <p className="w-full max-w-md text-xl ">{experience.company}</p>
+                {/* <p className=" mt-4 ">{experience.description}</p> */}
               </div>
-            )}
-          </div>
+            ))
+          ) : (
+            <div className="space-y-6 text-background">
+              {Array(3)
+                .fill(null)
+                .map((_, index) => (
+                  <div
+                    key={index}
+                    className="bg-foreground p-6 rounded-lg shadow-md"
+                  >
+                    <h3 className="text-3xl font-semibold font-antonsc">
+                      Your Role
+                    </h3>
+                    <p className="text-2xl font-semibold font-antonsc mt-4"></p>
+                    <p className=" text-xl mt-4"> company Name</p>
+                    <p className=" mt-4"> Job description </p>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
       </section>
-      {/* Contact Form Section */}
       <section id="Contact" className="min-h-screen flex items-center ">
         <div className=" w-full max-w-xl mx-auto px-4">
           <h2 className="text-4xl font-antonsc font-semibold text-center mb-8">
@@ -376,7 +372,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </Form>
         </div>
       </section>
-      {/* Footer */}
     </div>
   );
 };

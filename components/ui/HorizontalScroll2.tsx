@@ -27,13 +27,13 @@ const HorizontalScroll = ({ name }: { name: string }) => {
       <div
         ref={scrollRef}
         className="flex whitespace-nowrap text-[13vw] font-antonsc"
-        style={{ willChange: "transform" }}
+        // style={{ willChange: "transform" }}
       >
-        <h1 className=""> {name} </h1>
-        <h1 className=""> {name} </h1>
-        <h1 className=""> {name} </h1>
-        <h1 className=""> {name} </h1>
-        <h1 className=""> {name} </h1>
+        <h1> {name} </h1>
+        <h1> {name} </h1>
+        <h1> {name} </h1>
+        <h1> {name} </h1>
+        <h1> {name} </h1>
       </div>
     </div>
   );

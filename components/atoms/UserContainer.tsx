@@ -46,7 +46,7 @@ const UserContainer = (props: { User: User }) => {
           </Link>
           <p className="line-clamp-2 m-2">{props.User.bio}</p>
         </div>
-        <div className="flex gap-1">
+        <div className="flex gap-1 h-fit  justify-center flex-wrap">
           <Button asChild>
             <Link href={"/themes"}>Select Theme</Link>
           </Button>
