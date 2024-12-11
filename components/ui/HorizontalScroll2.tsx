@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 
-const HorizontalScroll = () => {
+const HorizontalScroll = ({ name }: { name: string }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const HorizontalScroll = () => {
       const scrollContainer = scrollRef.current;
 
       gsap.to(scrollContainer, {
-        xPercent: -50, // Move content to the left
+        xPercent: -30, // Move content to the left
         duration: 10, // Duration of the scroll animation
         ease: "none",
         repeat: -1, // Infinite repeat
@@ -24,15 +24,17 @@ const HorizontalScroll = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden w-fit p-2 h-fit flex">
+    <div className="absolute bottom-0">
       <div
         ref={scrollRef}
-        className="flex whitespace-nowrap"
+        className="flex whitespace-nowrap text-[13vw] font-antonsc"
         style={{ willChange: "transform" }}
       >
-        <h1 className="text-[15vw]"> Dhanush Prabakaran </h1>
-        <h1 className="text-[15vw]"> Dhanush Prabakaran </h1>
-        <h1 className="text-[15vw]"> Dhanush Prabakaran </h1>
+        <h1 className=""> {name} </h1>
+        <h1 className=""> {name} </h1>
+        <h1 className=""> {name} </h1>
+        <h1 className=""> {name} </h1>
+        <h1 className=""> {name} </h1>
       </div>
     </div>
   );

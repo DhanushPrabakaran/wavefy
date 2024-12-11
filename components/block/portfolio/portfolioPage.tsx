@@ -33,6 +33,7 @@ import {
   HomeIcon,
 } from "@radix-ui/react-icons";
 import HorizontalScroll from "@/components/ui/HorizontalScroll";
+import HorizontalScroll2 from "@/components/ui/HorizontalScroll2";
 const PortfolioPage = ({ User }: { User: UserProfile }) => {
   useEffect(() => {
     async function updateViewCount() {
@@ -260,12 +261,13 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
       </section>
       <section
         id="Home"
-        className="min-h-screen w-full relative flex bg-cover bg-fixed bg-[url('../public/Banner.jpeg')] align-middle justify-center items-center"
+        className="min-h-screen w-full overflow-x-hidden  relative flex bg-cover bg-fixed bg-[url('../public/Banner.jpeg')] align-middle justify-center items-center"
       >
-        <div className="flex flex-col gap-8">
-          <h1 className="text-[8vw] font-bold  font-antonsc">{User.name}</h1>
+        <div className="flex flex-col w-full gap-8">
+          {/* <h1 className="text-[8vw] font-bold  font-antonsc">{User.name}</h1> */}
           <p className="mt-4 text-3xl   ">{User.role}</p>
         </div>
+        <HorizontalScroll2 name={User.name || ""} />
       </section>
       {/* About Me Section */}
       <section id="About" className="min-h-screen flex items-center">

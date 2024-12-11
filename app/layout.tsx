@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NextTopLoader from "nextjs-toploader";
 
 const AntonSC = localFont({
-  src: "./fonts/Anton_SC,Roboto_Condensed/Anton_SC/AntonSC-Regular.ttf",
+  src: "./fonts/Tanker_Complete/Fonts/OTF/Tanker-Regular.otf",
   variable: "--font-antonsc",
   weight: "100 900",
 });

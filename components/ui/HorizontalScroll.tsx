@@ -95,7 +95,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ items }) => {
               />
             </div>
 
-            <p className=" font-koverwatch  line-clamp-4 lg:text-2xl text-xl lg:max-w-md p-1">
+            <p className=" font-koverwatch  line-clamp-4 lg:text-2xl text-xl lg:max-w-md w-full p-1">
               {item.description}
             </p>
           </div>
