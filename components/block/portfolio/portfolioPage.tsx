@@ -32,6 +32,7 @@ import {
   GitHubLogoIcon,
   HomeIcon,
 } from "@radix-ui/react-icons";
+import HorizontalScroll from "@/components/ui/HorizontalScroll";
 const PortfolioPage = ({ User }: { User: UserProfile }) => {
   useEffect(() => {
     async function updateViewCount() {
@@ -93,40 +94,40 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
         <nav className="md:flex hidden lg:flex  font-mono justify-between space-x-5 text-sm">
           <Link className="group" href="#Home">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full ">
-                <div className=" rounded-full  absolute -right-3 "></div>
+              <Button className="  ">
+                <div className="   absolute -right-3 "></div>
                 Home
               </Button>
             </div>
           </Link>
           <Link className="group  " href="#About">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full  ">
-                <div className="  rounded-full bg-foreground absolute -right-3 "></div>
+              <Button className="   ">
+                <div className="   bg-foreground absolute -right-3 "></div>
                 About
               </Button>
             </div>
           </Link>
           <Link className="group" href="#Project">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full ">
-                <div className=" rounded-full  absolute -right-3 "></div>
+              <Button className="  ">
+                <div className="   absolute -right-3 "></div>
                 Project
               </Button>
             </div>
           </Link>
           <Link className="group" href="#Experience">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full ">
-                <div className=" rounded-full  absolute -right-3 "></div>
+              <Button className="  ">
+                <div className="   absolute -right-3 "></div>
                 Experience
               </Button>
             </div>
           </Link>
           <Link className="group" href="#Contact">
             <div className="  flex flex-grow   ">
-              <Button className=" rounded-full ">
-                <div className=" rounded-full  absolute -right-3 "></div>
+              <Button className="  ">
+                <div className="   absolute -right-3 "></div>
                 Contact
               </Button>
             </div>
@@ -135,12 +136,12 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
 
         <div className="flex items-center space-x-2 lg:pr-4">
           <div className="lg:flex hidden space-x-2">
-            <Button className=" rounded-full" size="icon">
+            <Button className=" " size="icon">
               <Link href={"/"}>
                 <HomeIcon className="size-5" />
               </Link>
             </Button>
-            <Button className=" rounded-full" size="icon">
+            <Button className=" " size="icon">
               <Link
                 href={User.linkedinLink ? User.linkedinLink : ""}
                 className=""
@@ -148,7 +149,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                 <LinkedInLogoIcon className="size-5" />
               </Link>
             </Button>
-            <Button className=" rounded-full" size="icon">
+            <Button className=" " size="icon">
               <Link href={User.gitLink ? User.gitLink : ""} className="">
                 <GitHubLogoIcon className="size-5" />
               </Link>
@@ -156,7 +157,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </div>
           <Button
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className=" rounded-full"
+            className=" "
             size="icon"
           >
             <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -165,7 +166,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
 
           {/* Mobile Menu Button */}
           <div className="  md:hidden pr-2 text-xl font-mono flex flex-grow  group ">
-            <Button onClick={toggleMenu} className="  rounded-full ">
+            <Button onClick={toggleMenu} className="   ">
               Menu
             </Button>
           </div>
@@ -186,7 +187,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
               </div>
               <div className="flex items-center space-x-2 lg:pr-4">
                 <Button
-                  className=" rounded-full"
+                  className=" "
                   onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                   size="icon"
                 >
@@ -194,7 +195,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 </Button>
                 <div className="   lg:hidden  text-xl font-mono flex flex-grow  group ">
-                  <Button onClick={toggleMenu} className="  rounded-full ">
+                  <Button onClick={toggleMenu} className="   ">
                     Menu
                   </Button>
                 </div>
@@ -257,7 +258,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </div>
         </div>
       </section>
-
       <section
         id="Home"
         className="min-h-screen w-full relative flex bg-cover bg-fixed bg-[url('../public/Banner.jpeg')] align-middle justify-center items-center"
@@ -267,7 +267,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           <p className="mt-4 text-3xl   ">{User.role}</p>
         </div>
       </section>
-
       {/* About Me Section */}
       <section id="About" className="min-h-screen flex items-center">
         <div className="max-w-6xl  mx-auto px-4">
@@ -279,46 +278,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </p>
         </div>
       </section>
-
-      {/* Projects Section */}
-      <section id="Project" className="min-h-screen ">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl  font-semibold text-center mb-8 font-antonsc">
-            Projects
-          </h2>
-          {User.Project.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {User.Project.map((project, index) => (
-                <div
-                  key={index}
-                  className="bg-secondary border p-6 rounded-lg shadow-md"
-                >
-                  <h3 className="font-semibold">{project.title}</h3>
-                  <p className="text-muted-foreground mt-4 line-clamp-6">
-                    {project.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {Array(4)
-                .fill(null)
-                .map((_, index) => (
-                  <div
-                    key={index}
-                    className="bg-secondary border p-6 rounded-lg shadow-md"
-                  >
-                    <h3 className="font-semibold">Project Title</h3>
-                    <p className="text-muted-foreground mt-4">
-                      Project Description
-                    </p>
-                  </div>
-                ))}
-            </div>
-          )}
-        </div>
-      </section>
+      <HorizontalScroll items={User.Project} />
 
       {/* Experience Section */}
       <section id="Experience" className="min-h-screen my-3 ">
@@ -341,7 +301,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                     {format(parseISO(experience.end), "PPP")}
                   </p>
                   <p className=" text-xl mt-4">{experience.company}</p>
-                  <p className=" mt-4">{experience.description}</p>
+                  <p className=" mt-4 ">{experience.description}</p>
                 </div>
               ))
             ) : (
@@ -369,7 +329,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </div>
         </div>
       </section>
-
       {/* Contact Form Section */}
       <section id="Contact" className="min-h-screen flex items-center ">
         <div className=" w-full max-w-xl mx-auto px-4">
@@ -415,7 +374,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </Form>
         </div>
       </section>
-
       {/* Footer */}
     </div>
   );
