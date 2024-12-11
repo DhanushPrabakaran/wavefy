@@ -101,34 +101,22 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
           </Link>
           <Link className="group  " href="#About">
             <div className="  flex flex-grow   ">
-              <Button className="   ">
-                <div className="   bg-foreground absolute -right-3 "></div>
-                About
-              </Button>
+              <Button className="   ">About</Button>
             </div>
           </Link>
           <Link className="group" href="#Project">
             <div className="  flex flex-grow   ">
-              <Button className="  ">
-                <div className="   absolute -right-3 "></div>
-                Project
-              </Button>
+              <Button className="  ">Project</Button>
             </div>
           </Link>
           <Link className="group" href="#Experience">
             <div className="  flex flex-grow   ">
-              <Button className="  ">
-                <div className="   absolute -right-3 "></div>
-                Experience
-              </Button>
+              <Button className="  ">Experience</Button>
             </div>
           </Link>
           <Link className="group" href="#Contact">
             <div className="  flex flex-grow   ">
-              <Button className="  ">
-                <div className="   absolute -right-3 "></div>
-                Contact
-              </Button>
+              <Button className="  ">Contact</Button>
             </div>
           </Link>
         </nav>
@@ -165,7 +153,7 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 md:hidden left-0 bg-background  w-full h-full transform transition-transform duration-300 ease-in-out z-40 ${
+          className={`fixed top-0 md:hidden left-0 bg-black  w-full h-full transform transition-transform duration-300 ease-in-out z-40 ${
             isMenuOpen ? "translate-y-0" : "-translate-y-full"
           }`}
         >

@@ -15,7 +15,7 @@ export default async function Page({
 }) {
   const portfolioid = (await params).portfolioid;
   const user = await fetchProfileAction(portfolioid);
-  console.log(user);
+  // console.log(user);
   const ThemeComponent = themeMap[user.ThemeNo] || themeMap[1];
 
   return (
