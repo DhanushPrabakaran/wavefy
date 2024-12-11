@@ -1,8 +1,13 @@
 import { fetchProfileAction } from "@/actions/portfolioActions";
 
-import PortfolioPage from "@/components/block/portfolio/portfolioPage";
+import SolarBlackPortfolioPage from "@/components/block/portfolio/SolarBlackPortfolioPage";
 
-const themeMap = [PortfolioPage, PortfolioPage, PortfolioPage, PortfolioPage];
+const themeMap = [
+  SolarBlackPortfolioPage,
+  SolarBlackPortfolioPage,
+  SolarBlackPortfolioPage,
+  SolarBlackPortfolioPage,
+];
 export default async function Page({
   params,
 }: {

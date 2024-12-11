@@ -18,7 +18,6 @@ import {
   FormControl,
   FormMessage,
 } from "@/components/ui/form";
-import { useTheme } from "next-themes";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -26,15 +25,14 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
-  MoonIcon,
-  SunIcon,
   LinkedInLogoIcon,
   GitHubLogoIcon,
   HomeIcon,
 } from "@radix-ui/react-icons";
 import HorizontalScroll from "@/components/ui/HorizontalScroll";
-import HorizontalScroll2 from "@/components/ui/HorizontalScroll2";
-const PortfolioPage = ({ User }: { User: UserProfile }) => {
+// import HorizontalScroll2 from "@/components/ui/HorizontalScroll2";
+
+const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
   useEffect(() => {
     async function updateViewCount() {
       try {
@@ -47,7 +45,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
     updateViewCount();
   }, [User.id]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -83,9 +81,9 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen text-muted-foreground relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
-      {/* Hero Section */}
-      <section className="flex absolute w-full z-20  top-0 border-bb bg-transparent dark:border-neutral-800 border-foreground border-forground border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
+    <div className="min-h-screen  bg-black text-white relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
+      {/* Header Section */}
+      <section className="flex absolute w-full z-20  top-0 border-bb bg-black  border-neutral-800  border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
         <div className="flex justify-between items-center space-x-16">
           <h1 className=" text-2xl  lg:text-3xl  font-antonsc pointer-events-none    uppercase font-extrabold ">
             {User.name}
@@ -156,14 +154,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
               </Link>
             </Button>
           </div>
-          <Button
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className=" "
-            size="icon"
-          >
-            <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          </Button>
 
           {/* Mobile Menu Button */}
           <div className="  md:hidden pr-2 text-xl font-mono flex flex-grow  group ">
@@ -187,14 +177,6 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                 </h1>
               </div>
               <div className="flex items-center space-x-2 lg:pr-4">
-                <Button
-                  className=" "
-                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                  size="icon"
-                >
-                  <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                </Button>
                 <div className="   lg:hidden  text-xl font-mono flex flex-grow  group ">
                   <Button onClick={toggleMenu} className="   ">
                     Menu
@@ -259,16 +241,19 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </div>
         </div>
       </section>
-      <section
-        id="Home"
-        className="min-h-screen w-full overflow-x-hidden  relative flex bg-cover bg-fixed bg-[url('../public/Banner.jpeg')] align-middle justify-center items-center"
-      >
-        <div className="flex flex-col w-full gap-8">
-          {/* <h1 className="text-[8vw] font-bold  font-antonsc">{User.name}</h1> */}
-          <p className="mt-4 text-3xl   ">{User.role}</p>
+      {/* Hero Section */}
+      <section id="Home" className="min-h-screen flex flex-col">
+        <div className="bg-black flex-1 flex flex-col h-full  justify-center">
+          <h1 className=" text-[7vw] font-walkway uppercase p-2">
+            {User.name}
+          </h1>
         </div>
-        <HorizontalScroll2 name={User.name || ""} />
+        <h2>{User.role}</h2>
+        <div className="bg-[url('/pattern1.jpg')]  bg-contain origin-center bg-no-repeat bg-center flex-1 flex items-center justify-center">
+          {/* <Image src={Photo} alt="" className="w-full h-full object-cover" /> */}
+        </div>
       </section>
+
       {/* About Me Section */}
       <section id="About" className="min-h-screen flex items-center">
         <div className="max-w-6xl  mx-auto px-4">
@@ -280,6 +265,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
           </p>
         </div>
       </section>
+      {/* Project Section */}
       <HorizontalScroll items={User.Project} />
       {/* Experience Section */}
       <section
@@ -294,7 +280,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
             User.Experience.map((experience, index) => (
               <div
                 key={index}
-                className=" flex text-muted hover:text-foreground min-h-32 align-middle items-center max-md:flex-col justify-between border-y p-2"
+                className=" flex  min-h-32 align-middle items-center max-md:flex-col justify-between border-y p-2"
               >
                 <h3 className="text-3xl font-semibold font-antonsc w-full max-w-md">
                   {experience.role}
@@ -376,4 +362,4 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
   );
 };
 
-export default PortfolioPage;
+export default SolarBlackPortfolioPage;

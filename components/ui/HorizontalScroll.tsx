@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import Photo from "@/public/home.jpg";
+import Photo from "@/public/pattern1.jpg";
 import { Button } from "./button";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { useGSAP } from "@gsap/react";
@@ -66,7 +66,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ items }) => {
           key={index}
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={() => handleMouseLeave(index)}
-          className="HorizontalSection  bg-foreground font-antonsc  text-start relative bg-no-repeat  text-background h-screen flex flex-col lg:flex-row "
+          className="HorizontalSection  bg-white font-antonsc  text-start relative bg-no-repeat  text-black h-screen flex flex-col lg:flex-row "
         >
           <div className="flex z-10 max-md:flex-col  w-full   h-full justify-around p-1">
             <div className=" w-full gap-4  flex flex-col justify-between ">
