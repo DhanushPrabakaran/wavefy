@@ -32,6 +32,9 @@ const Header = async () => {
               <Button asChild>
                 <Link href={"/dashboard"}>Dashboard</Link>
               </Button>
+              {/* <Button asChild>
+                <Link href={"/themes"}>themes</Link>
+              </Button> */}
               <Button asChild>
                 <Link href={"/signout"}>signout</Link>
               </Button>

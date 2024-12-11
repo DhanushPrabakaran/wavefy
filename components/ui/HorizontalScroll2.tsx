@@ -8,7 +8,6 @@ const HorizontalScroll = ({ name }: { name: string }) => {
   useEffect(() => {
     if (scrollRef.current) {
       const scrollContainer = scrollRef.current;
-
       gsap.to(scrollContainer, {
         xPercent: -30, // Move content to the left
         duration: 10, // Duration of the scroll animation

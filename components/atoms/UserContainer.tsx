@@ -48,6 +48,9 @@ const UserContainer = (props: { User: User }) => {
         </div>
         <div className="flex gap-1">
           <Button asChild>
+            <Link href={"/themes"}>Select Theme</Link>
+          </Button>
+          <Button asChild>
             <Link href={"/profile"}>Edit Profile</Link>
           </Button>
           <Button
