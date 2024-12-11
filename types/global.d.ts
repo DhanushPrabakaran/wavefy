@@ -3,14 +3,10 @@
  * Define all global types in this file.
  *
 //  */
-import { User, Experience, Message } from "@prisma/client";
+import { User, Experience, Message, Project } from "@prisma/client";
 export type User = User;
 
-export type Project = {
-  id: string;
-  title: string;
-  description: string;
-};
+export type Project = Project;
 
 export type Experience = Experience;
 

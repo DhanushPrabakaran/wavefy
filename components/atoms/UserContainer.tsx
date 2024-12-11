@@ -33,7 +33,9 @@ const UserContainer = (props: { User: User }) => {
         </div>
 
         <div className="flex flex-col items-center">
-          <h2 className="  text-3xl font-bold ">{props.User.name}</h2>
+          <h2 className="  text-3xl font-bold font-walkway ">
+            {props.User.name}
+          </h2>
           <p className="  text-2xl  text-center">{props.User.role}</p>
           <p>{props.User.email}</p>
           <Link
@@ -48,7 +50,11 @@ const UserContainer = (props: { User: User }) => {
           <Button asChild>
             <Link href={"/profile"}>Edit Profile</Link>
           </Button>
-          <Button asChild>
+          <Button
+            className="text-muted-foreground hover:text-foreground"
+            variant={"secondary"}
+            asChild
+          >
             <Link target="_blank" href={`/portfolio/${props.User.id}`}>
               view portfolio
             </Link>

@@ -49,12 +49,12 @@ const ExperienceContainer = ({
                 {experience.description +
                   "adjkh iuywleiurylwcity  yiuyi  ryirwy nkuhikeuryciry uiriueyrityriouyoitu oyrowiutyqowuiqy"}
               </p>
-              <div className="hidden  group-hover:flex items-center justify-end w-full duration-1000">
+              <div className=" items-center justify-end w-full duration-1000">
                 <Button
                   asChild
                   size={"sm"}
+                  className="text-muted-foreground hover:text-foreground"
                   variant={"secondary"}
-                  className="m-1"
                 >
                   <Link href={`/experience/${experience.id}`}>Update</Link>
                 </Button>
@@ -79,14 +79,12 @@ const ExperienceContainer = ({
         className="p-4 mb-4 align-middle flex items-center justify-center rounded-md border"
         href={"/experience"}
       >
-        <svg
-          className="w-12 h-12  fill-stone-200  rounded-full text-gray-200 "
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          id="add-new"
+        <Button
+          className="text-muted-foreground hover:text-foreground"
+          variant={"secondary"}
         >
-          <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Zm4-9H13V8a1,1,0,0,0-2,0v3H8a1,1,0,0,0,0,2h3v3a1,1,0,0,0,2,0V13h3a1,1,0,0,0,0-2Z"></path>
-        </svg>
+          Add More
+        </Button>
       </Link>
     </section>
   );

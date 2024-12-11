@@ -14,12 +14,15 @@ import {
 } from "@/components/ui/form"; // Assuming you have custom form components
 import { toast } from "@/hooks/use-toast";
 import { fetchProject, updateProjectAction } from "@/actions/projectAction";
+import { Textarea } from "@/components/ui/textarea";
 // import Header from "@/components/block/Header";
 
 export default function ProjectForm({ projectId }: { projectId: string }) {
   const projectSchema = z.object({
     title: z.string().min(1, "Title is required"),
     description: z.string().min(1, "Description is required"),
+    liveLink: z.string().url().optional().or(z.literal("")),
+    gitLink: z.string().url().optional().or(z.literal("")),
   });
   const form = useForm<z.infer<typeof projectSchema>>({
     resolver: zodResolver(projectSchema),
@@ -34,6 +37,8 @@ export default function ProjectForm({ projectId }: { projectId: string }) {
         return {
           title: project.title || "",
           description: project.description || "",
+          liveLink: project.liveLink || "",
+          gitLink: project.gitLink || "",
         };
       } catch (error: unknown) {
         toast({
@@ -46,6 +51,8 @@ export default function ProjectForm({ projectId }: { projectId: string }) {
         return {
           title: "",
           description: "",
+          liveLink: "",
+          gitLink: "",
         };
       }
     },
@@ -71,11 +78,17 @@ export default function ProjectForm({ projectId }: { projectId: string }) {
   };
 
   return (
-    <div>
+    <div className="min-h-screen  flex items-center flex-col align-middle justify-center">
+      <div className="text-center">
+        <h1 className="font-semibold font-antonsc text-xl uppercase">
+          Project Update Form
+        </h1>
+        <p>You can update your project details here</p>
+      </div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-2/3 space-y-6"
+          className="w-2/3 space-y-6 "
         >
           <FormField
             control={form.control}
@@ -96,12 +109,46 @@ export default function ProjectForm({ projectId }: { projectId: string }) {
           />
           <FormField
             control={form.control}
+            name="gitLink"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>GitHub Link</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="github repo link"
+                    value={field.value || ""}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />{" "}
+          <FormField
+            control={form.control}
+            name="liveLink"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>live Link</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="live Link"
+                    value={field.value || ""}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="description"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Input
+                  <Textarea
                     placeholder="Project Description"
                     value={field.value || ""}
                     onChange={(e) => field.onChange(e.target.value)}

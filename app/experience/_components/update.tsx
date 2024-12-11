@@ -101,7 +101,12 @@ export default function ProjectForm({
 
   return (
     <section className="min-h-screen flex items-center flex-col align-middle justify-center">
-      <h1 className="font-antonsc text-2xl text-center">Create Experience</h1>
+      <div className="text-center">
+        <h1 className="font-semibold font-antonsc text-xl uppercase">
+          Experience Create Form
+        </h1>
+        <p>You can update your Experience details here</p>
+      </div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

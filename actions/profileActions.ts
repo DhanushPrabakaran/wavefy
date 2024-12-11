@@ -6,8 +6,8 @@ import { z } from "zod";
 const FormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  bio: z.string().optional(),
-  website: z.string().optional(),
+  bio: z.string().url().optional().or(z.literal("")),
+  website: z.string().url().optional().or(z.literal("")),
   experience: z.number().optional(),
   role: z.string().min(3, "role must be at least 3 characters"),
 });

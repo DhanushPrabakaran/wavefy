@@ -210,7 +210,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   <h1 className="  flex text-center justify-center items-center group">
                     Home
                   </h1>
-                  <h1 className="text-xl">0{length}</h1>
+                  <h1 className="text-xl">00</h1>
                 </Link>
                 <Link
                   className="group flex border-b justify-between"
@@ -220,7 +220,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   <h1 className="  flex text-center justify-center items-center ">
                     About
                   </h1>
-                  <h1 className="text-xl">0{length + 1}</h1>
+                  <h1 className="text-xl">01</h1>
                 </Link>
                 <Link
                   className="group flex border-b justify-between"
@@ -230,7 +230,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   <h1 className="flex text-center justify-center items-center">
                     Project
                   </h1>
-                  <h1 className="text-xl">0{length + 2}</h1>
+                  <h1 className="text-xl">02</h1>
                 </Link>
                 <Link
                   className="group flex border-b justify-between"
@@ -240,7 +240,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   <h1 className="flex text-center justify-center items-center">
                     Experience
                   </h1>
-                  <h1 className="text-xl">0{length + 2}</h1>
+                  <h1 className="text-xl">03</h1>
                 </Link>
                 <Link
                   className="group flex border-b justify-between"
@@ -250,7 +250,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   <h1 className="flex text-center justify-center items-center">
                     Contact
                   </h1>
-                  <h1 className="text-xl">0{length + 2}</h1>
+                  <h1 className="text-xl">04</h1>
                 </Link>
               </nav>
             </div>
@@ -294,7 +294,7 @@ const PortfolioPage = ({ User }: { User: UserProfile }) => {
                   className="bg-secondary border p-6 rounded-lg shadow-md"
                 >
                   <h3 className="font-semibold">{project.title}</h3>
-                  <p className="text-muted-foreground mt-4">
+                  <p className="text-muted-foreground mt-4 line-clamp-6">
                     {project.description}
                   </p>
                 </div>

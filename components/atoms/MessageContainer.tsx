@@ -51,6 +51,9 @@ const MessageContainer = ({ messages }: { messages: Message[] }) => {
           </div>
         </div>
       ))}
+      <div className="p-4 mb-4 lowercase text-muted-foreground align-middle flex items-center justify-center rounded-md border">
+        Nothing More to See more
+      </div>
     </section>
   );
 };
