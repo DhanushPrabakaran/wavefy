@@ -2,24 +2,53 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Photo from "@/public/themes/SolarBlackTheme.png";
+import Photo1 from "@/public/svg/pen.png";
+import Photo2 from "@/public/svg/dream.png";
+import Photo3 from "@/public/svg/paper.png";
+import Link from "next/link";
 const HeroBlock = () => {
   return (
-    <div className="overflow-hidden ">
+    <div className="min-h-screen py-16 ">
       <div className="">
         <div className="mx-auto flex max-w-5xl flex-col items-center">
           <div className="z-10 items-center text-center">
-            <h1 className="mb-8 font-antonsc text-pretty text-4xl font-medium lg:text-8xl">
-              Build your Own Portfolio With portfolioforge
+            <h1 className="mb-8 inline-block text-center items-center justify-center font-antonsc text-pretty text-[6vw] font-medium ">
+              Build
+              <Image
+                src={Photo1}
+                alt={""}
+                className="fill-orange-600 w-[4vw]  inline"
+              />
+              your Own
+              <span className="text-orange-700 "> Portfolio </span>
+              <Image
+                src={Photo2}
+                alt={""}
+                className="fill-orange-600 w-[4vw]  inline"
+              />{" "}
+              With portfolioforge
+              <Image
+                src={Photo3}
+                alt={""}
+                className="fill-orange-600 w-[4vw]  inline"
+              />
             </h1>
             <p className="mx-auto max-w-screen-md text-muted-foreground lg:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig
-              doloremque mollitia fugiat omnis! Porro facilis quo animi
-              consequatur. Explicabo.
+              Craft your professional portfolio effortlessly with Portfolio
+              Forge. Showcase your skills, experiences, and projects to stand
+              out in your field. With an intuitive dashboard and customizable
+              themes, Portfolio Forge makes portfolio creation seamless and
+              enjoyable.
             </p>
             <div className="mt-12 flex w-full flex-col justify-center gap-2 sm:flex-row">
               <Button>
-                Get started now
-                <ChevronRight className="ml-2 h-4" />
+                <Link
+                  href={"/dashboard"}
+                  className=" inline-flex text-center items-center"
+                >
+                  Get started now
+                  <ChevronRight className="ml-2 h-4" />
+                </Link>
               </Button>
               <Button variant="ghost">
                 Learn more

@@ -8,24 +8,24 @@ import {
 const FAQBlock = () => {
   const faqs = [
     {
-      question: "What is a FAQ?",
+      question: "What is Portfolio Forge?",
       answer:
-        "A FAQ is a list of frequently asked questions and answers on a particular topic.",
+        "Portfolio Forge is a platform designed to help individuals and professionals build and manage their online portfolios with ease.",
     },
     {
-      question: "What is the purpose of a FAQ?",
+      question: "Who can use Portfolio Forge?",
       answer:
-        "The purpose of a FAQ is to provide answers to common questions and help users find the information they need quickly and easily.",
+        "Anyone looking to showcase their skills, projects, or experiences can use Portfolio Forge, from students and freelancers to working professionals.",
     },
     {
-      question: "How do I create a FAQ?",
+      question: "Is there a free plan available?",
       answer:
-        "To create a FAQ, you need to compile a list of common questions and answers on a particular topic and organize them in a clear and easy-to-navigate format.",
+        "Yes, we offer a free plan with basic features, perfect for personal use and simple portfolios.",
     },
     {
-      question: "What are the benefits of a FAQ?",
+      question: "How do I get started?",
       answer:
-        "The benefits of a FAQ include providing quick and easy access to information, reducing the number of support requests, and improving the overall user experience.",
+        "Simply sign up on our platform, choose a template, and start adding your details. It's that easy!",
     },
   ];
 

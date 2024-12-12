@@ -4,7 +4,7 @@ import FeaturesBlock from "@/components/block/FeaturesBlock";
 import FooterBlock from "@/components/block/FooterBlock";
 import Header from "@/components/block/Header";
 import HeroBlock from "@/components/block/HeroBlock";
-import PriceBlock from "@/components/block/PriceBlock";
+// import PriceBlock from "@/components/block/PriceBlock";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <Header />
       <HeroBlock />
       <FeaturesBlock />
-      <PriceBlock />
+      {/* <PriceBlock /> */}
       <FAQBlock />
       <FooterBlock />
     </div>

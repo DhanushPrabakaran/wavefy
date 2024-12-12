@@ -39,19 +39,19 @@ const PriceBlock = () => {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Create a basic portfolio</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Access to core templates</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Basic theme customization</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Responsive design support</span>
                   </li>
                 </ul>
               </CardContent>
@@ -81,19 +81,19 @@ const PriceBlock = () => {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Everything in Free+</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Advanced customization options</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Access to premium themes</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CircleCheck className="size-4" />
-                    <span>Lorem ipsum dolor sit.</span>
+                    <span>Enhanced analytics and insights</span>
                   </li>
                 </ul>
               </CardContent>

@@ -11,44 +11,44 @@ const features = [
   {
     title: "Performance",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+      "Experience lightning-fast performance with optimized pages that ensure your portfolio loads quickly on any device.",
     icon: <Timer className="size-4 md:size-6" />,
   },
   {
     title: "Innovation",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+      "Enjoy cutting-edge features and modern designs that make your portfolio stand out from the crowd.",
     icon: <Zap className="size-4 md:size-6" />,
   },
   {
     title: "Quality",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+      "Create a polished and professional portfolio with high-quality templates and tools.",
     icon: <ZoomIn className="size-4 md:size-6" />,
   },
   {
     title: "Accessibility",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+      "Ensure your portfolio is accessible to everyone, including users with disabilities, with our inclusive design practices",
     icon: <PersonStanding className="size-4 md:size-6" />,
   },
   {
     title: "Affordability",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+      "Choose from flexible pricing plans that cater to all budgets without compromising on quality",
     icon: <DollarSign className="size-4 md:size-6" />,
   },
   {
     title: "Customer Support",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, accusantium quam. Temporibus quae quos deserunt!",
+      "Get dedicated support to assist you with building and managing your portfolio.",
     icon: <MessagesSquare className="size-4 md:size-6" />,
   },
 ];
 
 const FeaturesBlock = () => {
   return (
-    <section className="py-32  ">
+    <section className=" ">
       <div className="container mx-auto max-w-screen-xl">
         <p className="mb-4 text-xs text-muted-foreground md:pl-5">Features</p>
         <h2 className="text-3xl font-antonsc font-medium md:pl-5 lg:text-4xl">
