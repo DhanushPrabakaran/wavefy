@@ -57,7 +57,7 @@ export async function updateProjectAction(
     data,
   });
 
-  redirect(`/dashboard`); // Redirect to the updated project page after update
+  revalidatePath(`/dashboard`); // Redirect to the updated project page after update
   return updatedProject;
 }
 

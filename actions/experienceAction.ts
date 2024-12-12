@@ -47,7 +47,7 @@ export async function updateExperienceAction(
     data,
   });
 
-  redirect(`/dashboard`); // Redirect to the updated Experience page after update
+  revalidatePath(`/dashboard`); // Redirect to the updated Experience page after update
   return updatedExperience;
 }
 
