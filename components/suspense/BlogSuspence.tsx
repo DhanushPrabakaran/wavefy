@@ -13,7 +13,7 @@ const BlogSuspense: React.FC = () => {
       <div className="space-y-2">
         <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-full"></div>
         <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-5/6"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-2/3"></div>
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-full max-w-xl  p-2 "></div>
       </div>
 
       {/* Image Skeleton */}
@@ -24,7 +24,7 @@ const BlogSuspense: React.FC = () => {
       <div className="space-y-2">
         <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-full"></div>
         <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-5/6"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-2/3"></div>
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-full max-w-xl  p-2 "></div>
       </div>
       <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-md w-1/2"></div>
 
@@ -32,7 +32,7 @@ const BlogSuspense: React.FC = () => {
       <div className="space-y-2">
         <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-full"></div>
         <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-5/6"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-2/3"></div>
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-md w-full max-w-xl  p-2 "></div>
       </div>
       <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-md w-1/2"></div>
 

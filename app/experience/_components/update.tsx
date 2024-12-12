@@ -104,7 +104,7 @@ export default function ProjectForm({
 
   return (
     <section className="min-h-screen flex items-center flex-col align-middle justify-center">
-      <div className="w-2/3 space-y-6 ">
+      <div className=" w-full max-w-xl  p-2  space-y-6 ">
         <Button
           variant={"outline"}
           className="self-start"

@@ -293,7 +293,7 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
         </div>
       </section>
       <section id="Contact" className="min-h-screen flex items-center ">
-        <div className=" w-full max-w-xl mx-auto px-4">
+        <div className=" w-full max-w-xl  p-2  mx-auto px-4">
           <h2 className="text-4xl font-antonsc font-semibold text-center mb-8">
             Contact Me
           </h2>
