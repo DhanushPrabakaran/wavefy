@@ -15,7 +15,7 @@ const Header = async () => {
   return (
     <div className="   items-center flex w-full justify-between px-2 py-4">
       <Link href={"/"} className=" font-antonsc  text-3xl  ">
-        Wavey
+        portfolio<span className="text-orange-700">forge</span>
       </Link>
       <nav className="flex space-x-3 justify-center align-middle items-center ">
         <ModeToggle />

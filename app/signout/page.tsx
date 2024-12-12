@@ -10,7 +10,9 @@ export default function Page() {
         <div className=" bg-cover  bg-[url('../public/Banner.jpeg')] w-full h-full max-md:hidden"></div>
         <div className=" w-full h-full flex flex-col align-middle justify-center items-center">
           <div className="text-center flex flex-col gap-4 py-6 px-6 border rounded-md">
-            <h1 className=" font-antonsc text-4xl">Wavey</h1>
+            <h1 className=" font-antonsc text-4xl">
+              portfolio<span className="text-orange-700">forge</span>
+            </h1>
             <h5 className=" text-xl">Are you sure You want to logout ?</h5>
             <form
               action={async () => {
