@@ -24,11 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  LinkedInLogoIcon,
-  GitHubLogoIcon,
-  HomeIcon,
-} from "@radix-ui/react-icons";
+import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import HorizontalScroll from "@/components/ui/HorizontalScroll";
 // import HorizontalScroll2 from "@/components/ui/HorizontalScroll2";
 
@@ -108,12 +104,11 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
 
         <div className="flex items-center space-x-2 ">
           <div className="lg:flex hidden space-x-2">
-            <Button className=" " size="icon" variant={"outline"}>
-              <Link href={"/"}>
-                <HomeIcon className="size-5" />
-              </Link>
-            </Button>
-            <Button className=" " size="icon" variant={"outline"}>
+            <Button
+              className="bg-black border-none"
+              size="icon"
+              variant={"outline"}
+            >
               <Link
                 href={User.linkedinLink ? User.linkedinLink : ""}
                 className=""
@@ -121,7 +116,11 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
                 <LinkedInLogoIcon className="size-5" />
               </Link>
             </Button>
-            <Button className=" " size="icon" variant={"outline"}>
+            <Button
+              className="bg-black border-none"
+              size="icon"
+              variant={"outline"}
+            >
               <Link href={User.gitLink ? User.gitLink : ""} className="">
                 <GitHubLogoIcon className="size-5" />
               </Link>
@@ -145,7 +144,7 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
           <div className="py-4 px-2 h-full flex flex-col items-center">
             <div className="w-full flex justify-between  items-center">
               <div className="flex justify-between items-center space-x-16">
-                <h1 className=" ">{User.name}</h1>
+                <h1 className="bg-black border-none">{User.name}</h1>
               </div>
               <div className="flex items-center space-x-2 lg:pr-4">
                 <div className="   lg:hidden  text-xl font-mono flex flex-grow  group ">
@@ -237,7 +236,15 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
         </div>
       </section>
       {/* Project Section */}
-      <HorizontalScroll items={User.Project} />
+      <section
+        id="Project"
+        className="min-h-screen  flex flex-col  flex-wrap justify-around  "
+      >
+        <h2 className="text-4xl font-antonsc font-semibold text-center  mb-8">
+          Projects
+        </h2>
+        <HorizontalScroll items={User.Project} />
+      </section>
       {/* Experience Section */}
       <section
         id="Experience"
@@ -246,7 +253,7 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
         <h2 className="text-4xl font-antonsc font-semibold text-center  mb-8">
           Experience
         </h2>
-        <div className="space-y-6 text-start w-full self-center place-content-center">
+        <div className=" text-start w-full self-center place-content-center">
           {User.Experience.length > 0 ? (
             User.Experience.map((experience, index) => (
               <div
@@ -256,11 +263,11 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
                 <h3 className="text-3xl font-semibold font-antonsc w-full max-w-md">
                   {experience.role}
                 </h3>
-                <p className="text-2xl font-semibold font-antonsc  w-full max-w-md">
+                <p className="w-full max-w-md text-lg ">{experience.company}</p>
+                <p className=" w-full text-slate-600 max-w-md">
                   {format(parseISO(experience.start), "PPP")} -{" "}
                   {format(parseISO(experience.end), "PPP")}
                 </p>
-                <p className="w-full max-w-md text-xl ">{experience.company}</p>
                 {/* <p className=" mt-4 ">{experience.description}</p> */}
               </div>
             ))
