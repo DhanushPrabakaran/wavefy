@@ -4,36 +4,30 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
-
+import Photo from "@/public/Banner.jpeg";
 const Themes = [
   {
-    id: 1,
-    Name: "Light Theme",
+    id: 0,
+    Name: "Solar Dark Theme",
     PreviewLink: "/themes/light",
     Image: "/Banner.jpeg",
   },
   {
-    id: 2,
-    Name: "Dark Theme",
+    id: 1,
+    Name: "Solar Light Theme",
     PreviewLink: "/themes/dark",
     Image: "/Banner.jpeg",
   },
   {
-    id: 3,
+    id: 2,
     Name: "Solarized Theme",
     PreviewLink: "/themes/solarized",
     Image: "/Banner.jpeg",
   },
   {
-    id: 4,
+    id: 3,
     Name: "High Contrast Theme",
     PreviewLink: "/themes/high-contrast",
-    Image: "/Banner.jpeg",
-  },
-  {
-    id: 5,
-    Name: "Sepia Theme",
-    PreviewLink: "/themes/sepia",
     Image: "/Banner.jpeg",
   },
 ];
@@ -90,6 +84,24 @@ const SelectedTheme = ({ userId, Numb }: { userId: string; Numb: number }) => {
             </div>
           </div>
         ))}
+        <div
+          className={`flex flex-col items-center gap-4 border rounded-md px-2 py-4 `}
+        >
+          <Image
+            src={Photo}
+            alt={""}
+            width={300}
+            height={200}
+            className="rounded-md"
+          />
+          <h2 className="font-antonsc text-xl"> Working on</h2>
+          <div className="flex gap-4">
+            <Button asChild>
+              <Link href={""}>Preview Theme</Link>
+            </Button>
+            <Button variant={"default"}>developerme</Button>
+          </div>
+        </div>
       </div>
     </div>
   );

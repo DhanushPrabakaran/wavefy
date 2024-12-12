@@ -6,7 +6,11 @@ import UserContainer from "@/components/atoms/UserContainer";
 import MessageContainer from "@/components/atoms/MessageContainer";
 import { auth } from "@/auth";
 import Header from "@/components/block/Header";
-
+import {
+  BackpackIcon,
+  LaptopIcon,
+  ChatBubbleIcon,
+} from "@radix-ui/react-icons";
 const Page = async () => {
   const session = await auth();
   const user = await prisma.user.findUnique({
@@ -28,14 +32,20 @@ const Page = async () => {
       <div className="lg:h-screen flex max-md:p-2 gap-2 max-md:flex-col">
         <UserContainer User={user} />
         <div className=" w-full lg:overflow-scroll overflow-x-hidden">
-          <h2 className="text-2xl font-semibold font-antonsc mb-4">Projects</h2>
+          <h2 className="text-2xl inline-flex items-center gap-2 font-semibold font-antonsc mb-4">
+            <BackpackIcon className="size-5" />
+            Projects
+          </h2>
           <ProjectContainer projects={user.Project || []} />
-          <h2 className="text-2xl font-semibold font-antonsc mb-4">
-            Experience
+          <h2 className="text-2xl inline-flex items-center gap-2 font-semibold font-antonsc mb-4">
+            <LaptopIcon className="size-5" /> Experience
           </h2>
           <ExperienceContainer experiences={user.Experience || []} />
           <StatisticsContainer />
-          <h2 className="text-2xl font-semibold font-antonsc my-4">Messages</h2>
+          <h2 className="text-2xl inline-flex items-center gap-2 font-semibold font-antonsc mb-4">
+            <ChatBubbleIcon className="size-5" />
+            Messages
+          </h2>
           <MessageContainer messages={user.Message} />
         </div>
       </div>

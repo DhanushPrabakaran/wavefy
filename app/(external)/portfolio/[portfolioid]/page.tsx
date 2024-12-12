@@ -1,12 +1,12 @@
 import { fetchProfileAction } from "@/actions/portfolioActions";
 
 import SolarBlackPortfolioPage from "@/components/block/portfolio/SolarBlackPortfolioPage";
-
+import SolarRedPortfolioPage from "@/components/block/portfolio/SolarRedPortfolioPage";
+import SolarWhitePortfolioPage from "@/components/block/portfolio/SolarWhitePortfolioPage";
 const themeMap = [
   SolarBlackPortfolioPage,
-  SolarBlackPortfolioPage,
-  SolarBlackPortfolioPage,
-  SolarBlackPortfolioPage,
+  SolarRedPortfolioPage,
+  SolarWhitePortfolioPage,
 ];
 export default async function Page({
   params,
@@ -15,8 +15,7 @@ export default async function Page({
 }) {
   const portfolioid = (await params).portfolioid;
   const user = await fetchProfileAction(portfolioid);
-  // console.log(user);
-  const ThemeComponent = themeMap[user.ThemeNo] || themeMap[1];
+  const ThemeComponent = themeMap[user.ThemeNo] || themeMap[0];
 
   return (
     <>

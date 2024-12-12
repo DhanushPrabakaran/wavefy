@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "ThemeNo" SET DEFAULT 0;

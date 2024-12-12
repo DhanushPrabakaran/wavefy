@@ -26,7 +26,7 @@ model User {
   instaLink     String?
   gitLink       String?
   linkedinLink  String?
-  ThemeNo       Int             @default(1)
+  ThemeNo       Int             @default(0)
   Viewers       BigInt          @default(0)
   Authenticator Authenticator[]
   createdAt     DateTime        @default(now())
