@@ -12,7 +12,7 @@ const HeroBlock = () => {
       <div className="">
         <div className="mx-auto flex max-w-5xl flex-col items-center">
           <div className="z-10 items-center text-center">
-            <h1 className="mb-8 inline-block text-center items-center justify-center font-antonsc text-pretty text-[6vw] font-medium ">
+            <h1 className="mb-8 inline-block text-center items-center justify-center font-antonsc text-pretty max-md:text-[9vw]  text-[6vw] font-medium ">
               Build
               <Image
                 src={Photo1}
@@ -40,7 +40,7 @@ const HeroBlock = () => {
               themes, Portfolio Forge makes portfolio creation seamless and
               enjoyable.
             </p>
-            <div className="mt-12 flex w-full flex-col justify-center gap-2 sm:flex-row">
+            <div className="mt-12 flex w-full  justify-center gap-2 sm:flex-row">
               <Button>
                 <Link
                   href={"/dashboard"}
