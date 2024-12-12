@@ -3,10 +3,12 @@ import { fetchProfileAction } from "@/actions/portfolioActions";
 import SolarBlackPortfolioPage from "@/components/block/portfolio/SolarBlackPortfolioPage";
 import SolarRedPortfolioPage from "@/components/block/portfolio/SolarRedPortfolioPage";
 import SolarWhitePortfolioPage from "@/components/block/portfolio/SolarWhitePortfolioPage";
+import SolarYellowPortfolioPage from "@/components/block/portfolio/SolarYellowPortfolioPage";
 const themeMap = [
   SolarBlackPortfolioPage,
   SolarRedPortfolioPage,
   SolarWhitePortfolioPage,
+  SolarYellowPortfolioPage,
 ];
 export default async function Page({
   params,

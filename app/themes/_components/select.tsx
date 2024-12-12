@@ -10,25 +10,25 @@ const Themes = [
     id: 0,
     Name: "Solar Dark Theme",
     PreviewLink: "/themes/light",
-    Image: "/Banner.jpeg",
+    Image: "/themes/SolarBlackTheme.png",
   },
   {
     id: 1,
-    Name: "Solar Light Theme",
-    PreviewLink: "/themes/dark",
-    Image: "/Banner.jpeg",
+    Name: "Solar Red Theme",
+    PreviewLink: "/themes/",
+    Image: "/themes/SolarRedTheme.png",
   },
   {
     id: 2,
-    Name: "Solarized Theme",
+    Name: "Solarized White Theme",
     PreviewLink: "/themes/solarized",
-    Image: "/Banner.jpeg",
+    Image: "/themes/SolarWhiteTheme.png",
   },
   {
     id: 3,
-    Name: "High Contrast Theme",
+    Name: "Solarized Yellow Theme",
     PreviewLink: "/themes/high-contrast",
-    Image: "/Banner.jpeg",
+    Image: "/themes/SolarYellowTheme.png",
   },
 ];
 
@@ -84,7 +84,7 @@ const SelectedTheme = ({ userId, Numb }: { userId: string; Numb: number }) => {
             </div>
           </div>
         ))}
-        <div
+        {/* <div
           className={`flex flex-col items-center gap-4 border rounded-md px-2 py-4 `}
         >
           <Image
@@ -101,7 +101,7 @@ const SelectedTheme = ({ userId, Numb }: { userId: string; Numb: number }) => {
             </Button>
             <Button variant={"default"}>developerme</Button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

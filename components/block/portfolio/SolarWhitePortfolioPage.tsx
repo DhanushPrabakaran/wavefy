@@ -24,11 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  LinkedInLogoIcon,
-  GitHubLogoIcon,
-  HomeIcon,
-} from "@radix-ui/react-icons";
+import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import HorizontalScroll from "@/components/ui/HorizontalScroll";
 // import HorizontalScroll2 from "@/components/ui/HorizontalScroll2";
 
@@ -81,54 +77,38 @@ const SolarWhitePortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen  bg-white text-white relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
+    <div className="min-h-screen  bg-gray-300 text-black relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
       {/* Header Section */}
-      <section className="flex absolute w-full z-20  top-0 border-bb bg-black  border-neutral-800  border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
+      <section className="flex absolute w-full z-20  top-0 border-bb bg-gray-300  border-neutral-800  border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
         <div className="flex justify-between items-center space-x-16">
-          <h1 className=" text-2xl  lg:text-3xl  font-antonsc pointer-events-none    uppercase font-extrabold ">
-            {User.name}
-          </h1>
+          <h1 className=" ">{User.name}</h1>
         </div>
 
         <nav className="md:flex hidden lg:flex  font-mono justify-between space-x-5 text-sm">
           <Link className="group" href="#Home">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">
-                <div className="   absolute -right-3 "></div>
-                Home
-              </Button>
-            </div>
+            <div className="  flex flex-grow   ">Home</div>
           </Link>
           <Link className="group  " href="#About">
-            <div className="  flex flex-grow   ">
-              <Button className="   ">About</Button>
-            </div>
+            <div className="  flex flex-grow   ">About</div>
           </Link>
           <Link className="group" href="#Project">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">Project</Button>
-            </div>
+            <div className="  flex flex-grow   ">Project</div>
           </Link>
           <Link className="group" href="#Experience">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">Experience</Button>
-            </div>
+            <div className="  flex flex-grow   ">Experience</div>
           </Link>
           <Link className="group" href="#Contact">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">Contact</Button>
-            </div>
+            <div className="  flex flex-grow   ">Contact</div>
           </Link>
         </nav>
 
-        <div className="flex items-center space-x-2 lg:pr-4">
+        <div className="flex items-center space-x-2 ">
           <div className="lg:flex hidden space-x-2">
-            <Button className=" " size="icon">
-              <Link href={"/"}>
-                <HomeIcon className="size-5" />
-              </Link>
-            </Button>
-            <Button className=" " size="icon">
+            <Button
+              className="bg-gray-300 border-none"
+              size="icon"
+              variant={"outline"}
+            >
               <Link
                 href={User.linkedinLink ? User.linkedinLink : ""}
                 className=""
@@ -136,7 +116,11 @@ const SolarWhitePortfolioPage = ({ User }: { User: UserProfile }) => {
                 <LinkedInLogoIcon className="size-5" />
               </Link>
             </Button>
-            <Button className=" " size="icon">
+            <Button
+              className="bg-gray-300 border-none"
+              size="icon"
+              variant={"outline"}
+            >
               <Link href={User.gitLink ? User.gitLink : ""} className="">
                 <GitHubLogoIcon className="size-5" />
               </Link>
@@ -153,16 +137,14 @@ const SolarWhitePortfolioPage = ({ User }: { User: UserProfile }) => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 md:hidden left-0 bg-black  w-full h-full transform transition-transform duration-300 ease-in-out z-40 ${
+          className={`fixed top-0 md:hidden left-0 bg-gray-300  w-full h-full transform transition-transform duration-300 ease-in-out z-40 ${
             isMenuOpen ? "translate-y-0" : "-translate-y-full"
           }`}
         >
           <div className="py-4 px-2 h-full flex flex-col items-center">
             <div className="w-full flex justify-between  items-center">
               <div className="flex justify-between items-center space-x-16">
-                <h1 className=" text-2xl  lg:text-3xl  font-antonsc pointer-events-none    uppercase font-extrabold ">
-                  {User.name}
-                </h1>
+                <h1 className="bg-gray-300 border-none">{User.name}</h1>
               </div>
               <div className="flex items-center space-x-2 lg:pr-4">
                 <div className="   lg:hidden  text-xl font-mono flex flex-grow  group ">
@@ -231,13 +213,19 @@ const SolarWhitePortfolioPage = ({ User }: { User: UserProfile }) => {
       </section>
       {/* Hero Section */}
       <section id="Home" className="min-h-screen flex flex-col">
-        <div className="bg-black flex-1 flex flex-col h-full  justify-center">
+        <div className="bg-gray-300 flex-1 flex flex-col h-full  justify-center">
           <h1 className=" text-[7vw] font-walkway uppercase p-2">
             {User.name}
           </h1>
         </div>
         <h2>{User.role}</h2>
-        <div className="bg-[url('/pattern1.jpg')]  bg-contain origin-center bg-no-repeat bg-center flex-1 flex items-center justify-center">
+        <div
+          className="bg-[url('/pattern1.jpg')] bg-slate-600 bg-blend-difference bg-contain origin-center bg-no-repeat bg-center flex-1 flex items-center justify-center"
+          style={{
+            backgroundColor: "#2E2A24",
+            filter: "invert(1)",
+          }}
+        >
           {/* <Image src={Photo} alt="" className="w-full h-full object-cover" /> */}
         </div>
       </section>
@@ -254,7 +242,15 @@ const SolarWhitePortfolioPage = ({ User }: { User: UserProfile }) => {
         </div>
       </section>
       {/* Project Section */}
-      <HorizontalScroll items={User.Project} />
+      <section
+        id="Project"
+        className="min-h-screen  flex flex-col  flex-wrap justify-around  "
+      >
+        <h2 className="text-4xl font-antonsc font-semibold text-center  mb-8">
+          Projects
+        </h2>
+        <HorizontalScroll items={User.Project} />
+      </section>
       {/* Experience Section */}
       <section
         id="Experience"
@@ -263,7 +259,7 @@ const SolarWhitePortfolioPage = ({ User }: { User: UserProfile }) => {
         <h2 className="text-4xl font-antonsc font-semibold text-center  mb-8">
           Experience
         </h2>
-        <div className="space-y-6 text-start w-full self-center place-content-center">
+        <div className=" text-start w-full self-center place-content-center">
           {User.Experience.length > 0 ? (
             User.Experience.map((experience, index) => (
               <div
@@ -273,11 +269,11 @@ const SolarWhitePortfolioPage = ({ User }: { User: UserProfile }) => {
                 <h3 className="text-3xl font-semibold font-antonsc w-full max-w-md">
                   {experience.role}
                 </h3>
-                <p className="text-2xl font-semibold font-antonsc  w-full max-w-md">
+                <p className="w-full max-w-md text-lg ">{experience.company}</p>
+                <p className=" w-full text-slate-600 max-w-md">
                   {format(parseISO(experience.start), "PPP")} -{" "}
                   {format(parseISO(experience.end), "PPP")}
                 </p>
-                <p className="w-full max-w-md text-xl ">{experience.company}</p>
                 {/* <p className=" mt-4 ">{experience.description}</p> */}
               </div>
             ))

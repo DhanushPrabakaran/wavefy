@@ -28,7 +28,7 @@ import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import HorizontalScroll from "@/components/ui/HorizontalScroll";
 // import HorizontalScroll2 from "@/components/ui/HorizontalScroll2";
 
-const SolarRedPortfolioPage = ({ User }: { User: UserProfile }) => {
+const SolarYellowPortfolioPage = ({ User }: { User: UserProfile }) => {
   useEffect(() => {
     async function updateViewCount() {
       try {
@@ -77,9 +77,9 @@ const SolarRedPortfolioPage = ({ User }: { User: UserProfile }) => {
   };
 
   return (
-    <div className="min-h-screen  bg-red-500 text-black relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
+    <div className="min-h-screen  bg-yellow-300 text-black relative lg:text-lg scroll-smooth  text-center font-mono font-bold">
       {/* Header Section */}
-      <section className="flex absolute w-full z-20  top-0 border-bb bg-red-500  border-neutral-800  border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
+      <section className="flex absolute w-full z-20  top-0 border-bb bg-yellow-300  border-neutral-800  border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
         <div className="flex justify-between items-center space-x-16">
           <h1 className=" ">{User.name}</h1>
         </div>
@@ -105,7 +105,7 @@ const SolarRedPortfolioPage = ({ User }: { User: UserProfile }) => {
         <div className="flex items-center space-x-2 ">
           <div className="lg:flex hidden space-x-2">
             <Button
-              className="bg-red-500 border-none"
+              className="bg-yellow-300 border-none"
               size="icon"
               variant={"outline"}
             >
@@ -117,7 +117,7 @@ const SolarRedPortfolioPage = ({ User }: { User: UserProfile }) => {
               </Link>
             </Button>
             <Button
-              className="bg-red-500 border-none"
+              className="bg-yellow-300 border-none"
               size="icon"
               variant={"outline"}
             >
@@ -137,14 +137,14 @@ const SolarRedPortfolioPage = ({ User }: { User: UserProfile }) => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 md:hidden left-0 bg-red-500  w-full h-full transform transition-transform duration-300 ease-in-out z-40 ${
+          className={`fixed top-0 md:hidden left-0 bg-yellow-300  w-full h-full transform transition-transform duration-300 ease-in-out z-40 ${
             isMenuOpen ? "translate-y-0" : "-translate-y-full"
           }`}
         >
           <div className="py-4 px-2 h-full flex flex-col items-center">
             <div className="w-full flex justify-between  items-center">
               <div className="flex justify-between items-center space-x-16">
-                <h1 className="bg-red-500 border-none">{User.name}</h1>
+                <h1 className="bg-yellow-300 border-none">{User.name}</h1>
               </div>
               <div className="flex items-center space-x-2 lg:pr-4">
                 <div className="   lg:hidden  text-xl font-mono flex flex-grow  group ">
@@ -213,16 +213,16 @@ const SolarRedPortfolioPage = ({ User }: { User: UserProfile }) => {
       </section>
       {/* Hero Section */}
       <section id="Home" className="min-h-screen flex flex-col">
-        <div className="bg-red-500 flex-1 flex flex-col h-full  justify-center">
+        <div className="bg-yellow-300 flex-1 flex flex-col h-full  justify-center">
           <h1 className=" text-[7vw] font-walkway uppercase p-2">
             {User.name}
           </h1>
         </div>
         <h2>{User.role}</h2>
         <div
-          className="bg-[url('/pattern1.jpg')] bg-blend-difference bg-contain origin-center bg-no-repeat bg-center flex-1 flex items-center justify-center"
+          className="bg-[url('/pattern1.jpg')] bg-blue-800 bg-blend-difference bg-contain origin-center bg-no-repeat bg-center flex-1 flex items-center justify-center"
           style={{
-            backgroundColor: "#10BBBB", // Cyan, will invert to red
+            backgroundColor: "#021FB8",
             filter: "invert(1)",
           }}
         >
@@ -346,4 +346,4 @@ const SolarRedPortfolioPage = ({ User }: { User: UserProfile }) => {
   );
 };
 
-export default SolarRedPortfolioPage;
+export default SolarYellowPortfolioPage;
