@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
-import Photo from "@/public/Banner.jpeg";
+// import Photo from "@/public/Banner.jpeg";
 const Themes = [
   {
     id: 0,
