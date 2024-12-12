@@ -25,7 +25,7 @@ const FormSchema = z.object({
   image: z.string().url(),
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  bio: z.string().url().optional().or(z.literal("")),
+  bio: z.string().optional().or(z.literal("")),
   website: z.string().url().optional().or(z.literal("")),
   experience: z.coerce.number().optional(),
   role: z.string().min(3, "role must be at least 3 characters"),
