@@ -85,50 +85,35 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
       {/* Header Section */}
       <section className="flex absolute w-full z-20  top-0 border-bb bg-black  border-neutral-800  border-opacity-100 border-dashedchange items-center justify-between py-4 px-2 ">
         <div className="flex justify-between items-center space-x-16">
-          <h1 className=" text-2xl  lg:text-3xl  font-antonsc pointer-events-none    uppercase font-extrabold ">
-            {User.name}
-          </h1>
+          <h1 className=" ">{User.name}</h1>
         </div>
 
         <nav className="md:flex hidden lg:flex  font-mono justify-between space-x-5 text-sm">
           <Link className="group" href="#Home">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">
-                <div className="   absolute -right-3 "></div>
-                Home
-              </Button>
-            </div>
+            <div className="  flex flex-grow   ">Home</div>
           </Link>
           <Link className="group  " href="#About">
-            <div className="  flex flex-grow   ">
-              <Button className="   ">About</Button>
-            </div>
+            <div className="  flex flex-grow   ">About</div>
           </Link>
           <Link className="group" href="#Project">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">Project</Button>
-            </div>
+            <div className="  flex flex-grow   ">Project</div>
           </Link>
           <Link className="group" href="#Experience">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">Experience</Button>
-            </div>
+            <div className="  flex flex-grow   ">Experience</div>
           </Link>
           <Link className="group" href="#Contact">
-            <div className="  flex flex-grow   ">
-              <Button className="  ">Contact</Button>
-            </div>
+            <div className="  flex flex-grow   ">Contact</div>
           </Link>
         </nav>
 
-        <div className="flex items-center space-x-2 lg:pr-4">
+        <div className="flex items-center space-x-2 ">
           <div className="lg:flex hidden space-x-2">
-            <Button className=" " size="icon">
+            <Button className=" " size="icon" variant={"outline"}>
               <Link href={"/"}>
                 <HomeIcon className="size-5" />
               </Link>
             </Button>
-            <Button className=" " size="icon">
+            <Button className=" " size="icon" variant={"outline"}>
               <Link
                 href={User.linkedinLink ? User.linkedinLink : ""}
                 className=""
@@ -136,7 +121,7 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
                 <LinkedInLogoIcon className="size-5" />
               </Link>
             </Button>
-            <Button className=" " size="icon">
+            <Button className=" " size="icon" variant={"outline"}>
               <Link href={User.gitLink ? User.gitLink : ""} className="">
                 <GitHubLogoIcon className="size-5" />
               </Link>
@@ -160,9 +145,7 @@ const SolarBlackPortfolioPage = ({ User }: { User: UserProfile }) => {
           <div className="py-4 px-2 h-full flex flex-col items-center">
             <div className="w-full flex justify-between  items-center">
               <div className="flex justify-between items-center space-x-16">
-                <h1 className=" text-2xl  lg:text-3xl  font-antonsc pointer-events-none    uppercase font-extrabold ">
-                  {User.name}
-                </h1>
+                <h1 className=" ">{User.name}</h1>
               </div>
               <div className="flex items-center space-x-2 lg:pr-4">
                 <div className="   lg:hidden  text-xl font-mono flex flex-grow  group ">
