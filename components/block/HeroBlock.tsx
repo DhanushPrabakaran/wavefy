@@ -26,7 +26,7 @@ const HeroBlock = () => {
                 alt={""}
                 className="fill-orange-600 w-[4vw]  inline"
               />{" "}
-              With forgemyportfolio
+              With portfolioforge
               <Image
                 src={Photo3}
                 alt={""}

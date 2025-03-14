@@ -60,7 +60,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="hNAFUf5ssvqJlUqvjCz4Jj_PVzevjNDvJuN5-s16Kx8"
         />
-      </head>\\
+      </head>
       <body
         className={`${Walkway.variable} ${W95FA.variable} ${SCHABO.variable} ${geistSans.variable} ${geistMono.variable} ${AntonSC.variable} ${RobotoCondensed.variable} bg-cover bg-no-repeat   relative antialiased`}
       >
