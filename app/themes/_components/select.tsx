@@ -4,30 +4,31 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
+import { StepBackIcon } from "lucide-react";
 // import Photo from "@/public/Banner.jpeg";
 const Themes = [
   {
     id: 0,
     Name: "Solar Dark Theme",
-    PreviewLink: "/themes/light",
+    PreviewLink: "/themes/solarBlack",
     Image: "/themes/SolarBlackTheme.png",
   },
   {
     id: 1,
     Name: "Solar Red Theme",
-    PreviewLink: "/themes/",
+    PreviewLink: "/themes/solarRed",
     Image: "/themes/SolarRedTheme.png",
   },
   {
     id: 2,
     Name: "Solarized White Theme",
-    PreviewLink: "/themes/solarized",
+    PreviewLink: "/themes/solarWhite",
     Image: "/themes/SolarWhiteTheme.png",
   },
   {
     id: 3,
     Name: "Solarized Yellow Theme",
-    PreviewLink: "/themes/high-contrast",
+    PreviewLink: "/themes/solarYellow",
     Image: "/themes/SolarYellowTheme.png",
   },
 ];
@@ -55,7 +56,17 @@ const SelectedTheme = ({ userId, Numb }: { userId: string; Numb: number }) => {
 
   return (
     <div className="text-center">
-      <h1 className="text-3xl font-antonsc py-6">Pick Your Theme</h1>
+      <div className="flex items-center p-6 align-middle justify-center">
+        <Button className="  " variant={"outline"} asChild>
+          <Link href={"/dashboard"}>
+            <StepBackIcon />
+            back
+          </Link>
+        </Button>
+        <h1 className="text-3xl flex-1 self-center font-antonsc py-6">
+          Pick Your Theme
+        </h1>
+      </div>
       <div className="flex flex-wrap justify-around gap-2">
         {Themes.map((Theme) => (
           <div

@@ -17,6 +17,7 @@ const page = async () => {
   return (
     <div>
       <Header />
+      
       <SelectedTheme userId={user.id} Numb={user.ThemeNo} />
     </div>
   );
